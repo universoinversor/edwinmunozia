@@ -21,7 +21,15 @@ const STATIC_ASSETS = [
     '/favicon.svg',
     '/manifest.json',
     '/assets_v2/img/ai_entity_bot.png',
-    '/assets_v2/img/edwin-tech-main.png'
+    '/assets_v2/img/edwin-tech-main.png',
+    '/assets_v2/img/eth.svg',
+    '/assets_v2/img/bnb.svg',
+    '/assets_v2/img/solidity.svg',
+    '/assets_v2/img/polygon.svg',
+    '/assets_v2/img/solana.svg',
+    '/assets_v2/img/meta.svg',
+    '/assets_v2/img/shopify.svg',
+    '/assets_v2/img/openai.svg'
 ];
 
 // ─── INSTALL ──────────────────────────────────────────────
