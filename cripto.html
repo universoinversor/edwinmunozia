@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cripto & DeFi | Edwin Muñoz Isaza — Wealth Architecture</title>
+    <meta name="description"
+        content="Estrategia DeFi, análisis de protocolos Web3 y educación financiera. Ecosistema Cripto por Edwin Muñoz Isaza." />
+    <link rel="canonical" href="https://edwinmunozisaza.com/cripto.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edwinmunozisaza.com/cripto.html" />
+    <meta property="og:title" content="DeFi & Cripto | Edwin Muñoz Isaza" />
+    <meta property="og:description"
+        content="Estrategia DeFi, Copytrading y arquitectura de riqueza cripto. ROI documentado." />
+    <meta property="og:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DeFi Cripto | Edwin Muñoz Isaza" />
+    <meta name="twitter:description" content="Estrategia DeFi y arquitectura de riqueza cripto. ROI documentado." />
+    <meta name="twitter:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="theme-color" content="#0b0f1a" />
+    <style>
+        :root {
+            --cyan: #06b6d4;
+            --blue: #2855f6;
+            --pink: #f43f5e;
+            --t-1: #ffffff;
+            --t-2: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- CRIPTO SPECIFIC STYLES --- */
+        .hero--cripto {
+            background-image: radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15), transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(40, 85, 246, 0.1), transparent 40%);
+        }
+
+        .ticker-strip {
+            background: rgba(6, 182, 212, 0.05);
+            border-top: 1px solid rgba(6, 182, 212, 0.1);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .ticker-track {
+            display: inline-flex;
+            animation: ticker 40s linear infinite;
+            gap: 40px;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .t-sym {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+
+        .t-price {
+            color: #fff;
+        }
+
+        .t-up {
+            color: #10b981;
+        }
+
+        .t-dn {
+            color: #ef4444;
+        }
+
+        .strat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .strat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strat-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .strat-card__badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 4px 12px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            font-size: 0.7rem;
+            border-radius: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        .strat-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .strat-card__title {
+            font-family: var(--f-display);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .strat-card__desc {
+            color: var(--t-2);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .strat-card__tag {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        .hero__container--cripto {
+            padding-top: clamp(110px, 18vh, 160px);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 900px) {
+            .hero__container--cripto {
+                grid-template-columns: 1fr;
+                padding-top: 100px;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero__eyebrow { justify-content: center; }
+            .hero__name {
+                font-size: clamp(2.8rem, 10vw, 4.5rem) !important;
+                margin-bottom: 20px;
+            }
+            .hero__roles { justify-content: center; }
+            .hero__ctas {
+                display: flex !important;
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            .hero__ctas .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .hero__metrics {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 30px !important;
+            }
+            .metric__sep { display: none; }
+            
+            .metric.glass {
+                max-width: 100%;
+                margin: 0 !important;
+            }
+
+            .float-badge {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="cripto">
+    <div class="page-indicator page-indicator--cripto"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+    <div class="scroll-progress"></div>
+
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader__inner">
+            <div class="loader__logo">💎<span style="color:var(--cyan)">.</span></div>
+            <div class="loader__bar">
+                <div class="loader__progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader__status mono" id="loaderStatus">Sincronizando cadena...</div>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo" aria-label="Volver al inicio">EM<span class="dot" aria-hidden="true">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="/index" class="nav__link">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link active">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <div class="nav__tools" style="display:flex; align-items:center; gap:12px;">
+                <div class="lang-switcher" style="display:flex; background:rgba(255,255,255,0.05); border:1px solid var(--b-1); border-radius:8px; padding:3px; backdrop-filter:blur(5px);">
+                    <button class="lang-btn active" data-lang="es" style="background:transparent; color:var(--t-1); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">ES</button>
+                    <button class="lang-btn" data-lang="en" style="background:transparent; color:var(--t-2); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">EN</button>
+                </div>
+                <button class="btn btn--outline web3-connect-btn" style="padding:0 14px; font-size:0.8rem; height:34px; display:flex; align-items:center; gap:6px;"><i data-lucide="wallet" style="width:14px; height:14px;"></i> Connect</button>
+                <a href="#contacto-cripto" class="btn btn--glow nav__cta" style="height:34px; padding:0 20px; line-height:34px; font-size:0.85rem;">Consultar</a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <style>
+            .lang-btn.active { background: var(--pink); color: #fff !important; }
+            .nav__cta { display: none; }
+            @media (min-width: 900px) {
+                .nav__cta { display: inline-flex; }
+                .nav__tools { gap: 20px; }
+            }
+            @media (max-width: 900px) {
+                .nav__tools { margin-right: 40px; }
+            }
+        </style>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link">Inicio</a>
+        <a href="/desarrollo" class="mob-link">Desarrollo</a>
+        <a href="/cripto" class="mob-link active">Cripto</a>
+        <a href="/marketing" class="mob-link">Marketing</a>
+        <a href="/negocios" class="mob-link">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="/index#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="/index#inicio" class="app-nav-item">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="/index#pilares" class="app-nav-item">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="#contacto-cripto" class="app-nav-item item--cta">
+            <i data-lucide="message-square"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+    <div class="page-wrap">
+
+        <!-- HERO -->
+        <section class="hero" id="inicio-cripto">
+            <div class="hero__bg hero--cripto">
+                <div class="grid" aria-hidden="true"></div>
+            </div>
+            <div class="container hero__container--cripto">
+                <div>
+                    <div class="hero__eyebrow">
+                        <span class="status-dot"></span>
+                        <span class="mono">Yield Architecture &bull; BingX Institutional</span>
+                    </div>
+                    <h1 class="hero__name" style="font-size: clamp(2.5rem, 12vw, 8.5rem); line-height: 0.9;">
+                        <span class="hero__name-line">DeFi</span>
+                        <span class="hero__name-line glitch" data-text="Protocol"
+                            style="background:var(--g-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Protocol</span>
+                        <span class="hero__name-line">Strategist</span>
+                    </h1>
+                    <div class="hero__roles">
+                        <span class="mono">// </span>
+                        <span class="typewriter" id="typewriter"></span>
+                        <span class="cursor-blink" style="color:var(--accent)">|</span>
+                    </div>
+                    <p class="hero__lema">Estrategias de inversión auditadas y gestión de riesgo institucional.
+                        <strong>Copy Trader VIP en BingX</strong> y arquitecto del ecosistema
+                        <strong>CEGlobalEarn</strong>.
+                    </p>
+
+                    <div class="hero__ctas">
+                        <a href="bingxcopy.html" class="btn btn--primary btn--lg btn--pulse">Copiar Estrategia <span
+                                class="arrow">↗</span></a>
+                        <a href="#proceso-cripto" class="btn btn--outline btn--pulse-alt">Cómo Funciona</a>
+                    </div>
+
+                    <div class="hero__metrics" style="margin-top:40px">
+                        <div class="metric glass"
+                            style="border: 1px solid rgba(6, 182, 212, 0.2); padding: 12px 20px; border-radius: 14px;">
+                            <span class="metric__val" data-count="150" style="color:var(--cyan)">0</span><sup
+                                style="color:var(--cyan)">K+</sup>
+                            <span class="metric__label">AUM Managed</span>
+                        </div>
+                        <div class="metric__sep"></div>
+                        <div class="metric glass"
+                            style="border: 1px solid rgba(6, 182, 212, 0.2); padding: 12px 20px; border-radius: 14px;">
+                            <span class="metric__val" data-count="88" style="color:var(--cyan)">0</span><sup
+                                style="color:var(--cyan)">%</sup>
+                            <span class="metric__label">Win Rate</span>
+                        </div>
+                        <div class="metric__sep"></div>
+                        <div class="metric glass"
+                            style="border: 1px solid rgba(6, 182, 212, 0.2); padding: 12px 20px; border-radius: 14px;">
+                            <span class="metric__val" data-count="300" style="color:var(--cyan)">0</span><sup
+                                style="color:var(--cyan)">+</sup>
+                            <span class="metric__label">Copytraders</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOTO F1 -->
+                <div class="sr sr-d2" style="position:relative;">
+                    <div
+                        style="position:relative; border-radius:24px; overflow:hidden; transform:rotate(1.5deg); box-shadow:0 40px 100px rgba(6,182,212,0.25);">
+                        <img src="/assets/img/edwin-f1-2.jpg" alt="Edwin Muñoz" loading="lazy"
+                            style="width:100%; height:500px; object-fit:cover; display:block;">
+                    </div>
+                    <!-- Badges Live -->
+                    <div class="float-badge float-badge--tl" id="badge-btc"><span class="mono">BTC ▲+2.4%</span><span
+                            class="fb-dot"></span></div>
+                    <div class="float-badge float-badge--tr" id="badge-eth"><span class="mono">ETH ▲+1.8%</span><span
+                            class="fb-dot fb-dot--blue"></span></div>
+                    <div class="float-badge float-badge--br" id="badge-sol"><span class="mono">SOL ▲+4.1%</span><span
+                            class="fb-dot fb-dot--purple"></span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TICKER -->
+        <div class="ticker-strip" aria-hidden="true">
+            <div class="ticker-track">
+                <div class="ticker-item" id="tick-btc"><span class="t-sym">BTC</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <div class="ticker-item" id="tick-eth"><span class="t-sym">ETH</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <div class="ticker-item" id="tick-sol"><span class="t-sym">SOL</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <div class="ticker-item" id="tick-bnb"><span class="t-sym">BNB</span><span
+                        class="t-price">$0.00</span><span class="t-dn">--%</span></div>
+                <div class="ticker-item" id="tick-link"><span class="t-sym">LINK</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <!-- duplicate -->
+                <div class="ticker-item" id="tick-btc-2"><span class="t-sym">BTC</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <div class="ticker-item" id="tick-eth-2"><span class="t-sym">ETH</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <div class="ticker-item" id="tick-sol-2"><span class="t-sym">SOL</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+                <div class="ticker-item" id="tick-bnb-2"><span class="t-sym">BNB</span><span
+                        class="t-price">$0.00</span><span class="t-dn">--%</span></div>
+                <div class="ticker-item" id="tick-link-2"><span class="t-sym">LINK</span><span
+                        class="t-price">$0.00</span><span class="t-up">--%</span></div>
+            </div>
+        </div>
+
+        <!-- ESTRATEGIAS -->
+        <section class="section" id="estrategias">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--cripto">Alpha Wealth</div>
+                    <h2 class="section-title">Estrategias <span class="grad-text--cripto">Auditadas</span></h2>
+                    <p class="body-md text-muted max-560">Sistemas reales probados con
+                        capital institucional y minorista.</p>
+                </div>
+                <div class="strat-grid">
+                    <article class="strat-card sr sr-d1">
+                        <div class="strat-card__badge">Auditado On-Chain</div>
+                        <div class="strat-card__icon"><i data-lucide="zap"></i></div>
+                        <h3 class="strat-card__title">Yield Farming</h3>
+                        <p class="strat-card__desc">Gestión activa en <strong>Uniswap v3</strong>. Optimizamos rangos de
+                            liquidez concentrada para maximizar el volumen de comisiones.</p>
+                        <span class="strat-card__tag">APY Histórico: 25–65%</span>
+                    </article>
+                    <article class="strat-card sr sr-d2">
+                        <div class="strat-card__badge">Data-Driven</div>
+                        <div class="strat-card__icon"><i data-lucide="bar-chart-3"></i></div>
+                        <h3 class="strat-card__title">Análisis On-Chain</h3>
+                        <p class="strat-card__desc">Análisis de métricas <strong>MVRV</strong> y flujos de ballenas para
+                            anticipar ciclos de mercado con precisión algorítmica.</p>
+                        <span class="strat-card__tag">Institutional Alpha</span>
+                    </article>
+                    <article class="strat-card sr sr-d3">
+                        <div class="strat-card__badge">Eficiencia</div>
+                        <div class="strat-card__icon"><i data-lucide="refresh-cw"></i></div>
+                        <h3 class="strat-card__title">BingX Copy Trading</h3>
+                        <p class="strat-card__desc">Estrategias replicables con gestión de riesgo institucional. Gana
+                            mientras copias mis movimientos en tiempo real.</p>
+                        <span class="strat-card__tag">Hands-free Wealth</span>
+                    </article>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- REDOTPAY SECTION -->
+        <section class="redotpay-section" id="redotpay">
+            <div class="container">
+                <div class="redotpay-wrap">
+                    <div class="sr">
+                        <div class="label label--cripto">Global Spending</div>
+                        <h2 class="section-title">Tu Capital, <br><span class="grad-text--cripto">Sin Fronteras.</span>
+                        </h2>
+                        <p class="body-lg text-muted">Usa tus ganancias de trading y DeFi en el mundo real con la
+                            tarjeta <strong>RedotPay</strong>. Pagos instantáneos, retiros en ATM y total libertad.</p>
+                        <ul class="body-md text-muted" style="margin: 24px 0; list-style: none; padding: 0;">
+                            <li style="margin-bottom:12px">🚀 Aprobación instantánea sin KYC complejo.</li>
+                            <li style="margin-bottom:12px">💳 Tarjeta virtual y física disponible.</li>
+                            <li style="margin-bottom:12px">💰 Cashback en cada compra realizada.</li>
+                        </ul>
+                        <a href="https://url.hk/i/es/jmgx0" target="_blank" class="btn btn--cripto btn--pulse">Obtener
+                            mi tarjeta →</a>
+                    </div>
+
+                    <div class="sr sr-d2">
+                        <div class="redotpay-card">
+                            <div class="redotpay-glow"></div>
+                            <div class="rp-chip"></div>
+                            <div class="rp-logo">Redot<span>Pay</span></div>
+                            <div class="rp-number">**** **** **** 8888</div>
+                            <div class="rp-footer">
+                                <div class="rp-name">Edwin Muñoz</div>
+                                <div class="rp-brand">VISA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORKFLOW SECTION -->
+        <section class="workflow-section" id="metodologia-cripto">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--cripto">El Proceso Alpha</div>
+                    <h2 class="section-title">Estrategia <span class="grad-text--cripto">Cualificada</span></h2>
+                </div>
+                <div class="wf-grid">
+                    <div class="wf-card glass sr sr-d1">
+                        <div class="wf-card__step"
+                            style="background:var(--accent-cripto); box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);">01
+                        </div>
+                        <h3 class="wf-card__title">Análisis On-Chain</h3>
+                        <p class="wf-card__desc">Estudio de métricas MVRV, flujos de intercambio y comportamiento de
+                            ballenas para el activo objetivo.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d2">
+                        <div class="wf-card__step"
+                            style="background:var(--accent-cripto); box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);">02
+                        </div>
+                        <h3 class="wf-card__title">Modelado Alpha</h3>
+                        <p class="wf-card__desc">Selección de protocolos de alta liquidez y modelado de escenarios de
+                            rendimiento/riesgo realistas.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d3">
+                        <div class="wf-card__step"
+                            style="background:var(--accent-cripto); box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);">03
+                        </div>
+                        <h3 class="wf-card__title">Ejecución Pro</h3>
+                        <p class="wf-card__desc">Despliegue de capital en rangos concentrados o activación de señales
+                            institucionales en Copytrading.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d4">
+                        <div class="wf-card__step"
+                            style="background:var(--accent-cripto); box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);">04
+                        </div>
+                        <h3 class="wf-card__title">Rebalanceo</h3>
+                        <p class="wf-card__desc">Monitoreo 24/7 y ajuste de rangos para maximizar el volumen de
+                            comisiones y mitigar el Impermanent Loss.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY WORK WITH ME CRIPTO -->
+        <section class="section" id="ventaja-cripto">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--cripto">Infraestructura Pro</div>
+                    <h2 class="section-title">Por qué mi Alpha es <span class="grad-text--cripto">Superior</span></h2>
+                </div>
+                <div class="svc-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h4 class="auth-card__title">Gestión de Liquidez Concentrada</h4>
+                        <p class="auth-card__data">No operamos en rangos infinitos. Usamos scripts propios para
+                            rebalancear posiciones en <strong>Uniswap v3</strong> con una precisión de 0.01%, capturando
+                            hasta el <strong>3x</strong> de comisiones que un LPs estándar.</p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h4 class="auth-card__title">Mitigación de Impermanent Loss</h4>
+                        <p class="auth-card__data">Implementamos <strong>Hedge Strategies</strong> automáticas mediante
+                            futuros. Protegemos el capital principal para que el yield sea ganancia neta, no
+                            compensación por pérdida de valor.</p>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h4 class="auth-card__title">Bots de Ejecución Privada</h4>
+                        <p class="auth-card__data">Nuestras señales de Copytrading no dependen de la latencia humana. Se
+                            ejecutan mediante <strong>Webhooks Institucionales</strong> directos a la API del exchange,
+                            garantizando el mejor precio de entrada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL PROOF SECTION -->
+        <section class="proof-section" id="social-proof-cripto">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--cripto">Histórico Alpha</div>
+                    <h2 class="section-title">Resultados <span class="grad-text--cripto">Auditados</span></h2>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card glass sr sr-d1">
+                        <span class="result-card__val">+88%</span>
+                        <span class="result-card__label">Win Rate Trading</span>
+                    </div>
+                    <div class="result-card glass sr sr-d2">
+                        <span class="result-card__val">$150K+</span>
+                        <span class="result-card__label">AUM Copytrading</span>
+                    </div>
+                    <div class="result-card glass sr sr-d3">
+                        <span class="result-card__val">Audit</span>
+                        <span class="result-card__label">On-Chain Verified</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTHORITY & INDUSTRY DATA -->
+        <section class="authority-section">
+            <div class="container">
+                <div class="auth-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h3 class="auth-card__title">Escala del Wealth Management</h3>
+                        <p class="auth-card__data">El mercado global de Copytrading proyecta alcanzar los <strong>$15.4
+                                billion USD</strong> para 2033, con un crecimiento anual del 17.8%, democratizando el
+                            acceso a estrategias institucionales.</p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h3 class="auth-card__title">Fórmula MVRV (Alpha)</h3>
+                        <p class="auth-card__data">Utilizamos métricas on-chain para identificar suelos y techos de
+                            mercado con precisión matemática:</p>
+                        <div class="formula-box">
+                            <code>MVRV = Market Value / Realized Value</code>
+                            <span>Z-Score > 3.5 (Sobreventa) | Z-Score < 1 (Oportunidad)</span>
+                        </div>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h3 class="auth-card__title">Productividad DeFi</h3>
+                        <p class="auth-card__data">La liquidez concentrada en sistemas como <strong>Uniswap v3</strong>
+                            permite generar comisiones hasta <strong>40x</strong> más eficientes que el modelo
+                            tradicional de AMM.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAFOLIO CRIPTO -->
+        <section class="section" id="proyectos-cripto">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--cripto">Portafolio</div>
+                    <h2 class="section-title">Soluciones <span class="grad-text--cripto">DeFi</span></h2>
+                </div>
+                <div class="works-grid" data-category="Cripto,Yield"></div>
+            </div>
+        </section>
+
+        <!-- TRABAJA CONMIGO -->
+        <section class="section" id="trabajemos">
+            <div class="container">
+                <div class="wwm-grid" style="align-items: center;">
+                    <div class="wwm-image-wrap sr">
+                        <img src="/assets/img/edwin-f1-1.jpg" alt="Edwin Muñoz F1" class="wwm-photo" loading="lazy"
+                            style="border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.6);">
+                    </div>
+                    <div class="wwm-content sr sr-d2">
+                        <div class="label label--cripto">Velocidad F1</div>
+                        <h2 class="wwm-title" style="margin-bottom: 30px;">¿Quieres <span
+                                class="grad-text--cripto">trabajar conmigo?</span></h2>
+                        <div class="wwm-cards" style="display: grid; gap: 20px;">
+                            <div class="wwm-card--elite">
+                                <div class="wwm-card__badge">Auditado</div>
+                                <div class="wwm-card__icon"><i data-lucide="trending-up"></i></div>
+                                <h3 class="wwm-card__title">Copytrading VIP</h3>
+                                <p class="wwm-card__desc" style="margin-bottom: 20px;">Copia mis estrategias
+                                    institucionales automáticamente en BingX. Rendimiento histórico: <strong>+150%
+                                        ROI</strong>.</p>
+                                <a href="bingxcopy.html" class="btn btn--glow btn--shiny btn--pulse"
+                                    style="width: 100%; text-align: center;">Ver Rendimiento →</a>
+                            </div>
+                            <div class="wwm-card--elite">
+                                <div class="wwm-card__badge">Live Alpha</div>
+                                <div class="wwm-card__icon"><i data-lucide="users"></i></div>
+                                <h3 class="wwm-card__title">Comunidad Edwin</h3>
+                                <p class="wwm-card__desc" style="margin-bottom: 20px;">Únete a <strong>+250
+                                        inversionistas</strong> en nuestro grupo VIP de señales Web3.</p>
+                                <a href="https://chat.whatsapp.com/FL9Dfop2qcZ7n4f72sPhcK" target="_blank"
+                                    class="btn btn--white" style="width: 100%; text-align: center; color: #000;">Unirme
+                                    Ahora →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONTACTO -->
+        <section class="section" id="contacto-cripto">
+            <div class="container">
+                <div class="section-head sr">
+                    <div class="label label--cripto">Contacto</div>
+                    <h2 class="section-title">Hablemos <span class="grad-text--cripto">directo.</span></h2>
+                </div>
+                <div class="contacto__grid">
+                    <div class="contacto__left sr">
+                        <p class="body-lg text-muted">¿Listo para escalar tu arquitectura de capital? Si tienes un reto
+                            técnico o quieres automatizar tus ingresos DeFi, escríbeme.</p>
+                        <div class="clinks">
+                            <a href="https://wa.link/iqra1o" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">💬</div>
+                                <div>
+                                    <div class="clink__label mono">WhatsApp</div>
+                                    <div class="clink__val">wa.link/iqra1o →</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                            <a href="https://t.me/edwinMnzia" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">✈️</div>
+                                <div>
+                                    <div class="clink__label mono">Telegram</div>
+                                    <div class="clink__val">@edwinMnzia</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                            <a href="https://www.instagram.com/edwinmunozisaza/" target="_blank" rel="noopener"
+                                class="clink glass">
+                                <div class="clink__icon">📸</div>
+                                <div>
+                                    <div class="clink__label mono">Instagram</div>
+                                    <div class="clink__val">@edwinmunozisaza</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contacto__form glass sr sr-d2" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="fgroup"><label for="f-nombre" class="mono">Nombre</label><input type="text"
+                                    id="f-nombre" name="nombre" placeholder="Tu nombre" required /></div>
+                            <div class="fgroup"><label for="f-email" class="mono">Email</label><input type="email"
+                                    id="f-email" name="email" placeholder="tu@email.com" required /></div>
+                        </div>
+                        <div class="fgroup">
+                            <label for="f-servicio" class="mono">Interés</label>
+                            <select id="f-servicio" name="servicio" required>
+                                <option value="cripto" selected>Cripto & DeFi
+                                    Architecture</option>
+                                <option value="trading">Copytrading VIP</option>
+                                <option value="dev">Desarrollo Web3</option>
+                            </select>
+                        </div>
+                        <div class="fgroup"><label for="f-msg" class="mono">Mensaje</label><textarea id="f-msg"
+                                name="mensaje" rows="4" placeholder="¿Cómo puedo ayudarte a escalar?"
+                                required></textarea></div>
+                        <button type="submit" class="btn btn--cripto btn--full btn--pulse" id="f-submit">Enviar mensaje
+                            →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <div class="footer__logo">EM<span class="dot">.</span></div>
+                        <p class="mono footer__tagline">Tech & Web3 Architect.</p>
+                    </div>
+                    <nav class="footer__nav">
+                        <a href="/index">Inicio</a>
+                        <a href="/desarrollo">Desarrollo</a>
+                        <a href="/cripto">Cripto</a>
+                        <a href="/marketing">Marketing</a>
+                        <a href="/negocios">Negocios</a>
+                        <a href="/diplomado">Diplomado</a>
+                    </nav>
+
+                </div>
+                <div class="footer__bottom">
+                    <span class="mono">© 2026 Edwin Muñoz Isaza.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="/global-enhancers.js" defer></script>
+    <script src="/ai-agent.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => { });
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            if (typeof initTypewriter === 'function') initTypewriter(['DeFi Strategist', 'Yield Architect', 'Web3 Educator', 'Protocol Analyst']);
+        });
+    </script>
+
+</body>
+
+</html>

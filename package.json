@@ -1,0 +1,12 @@
+{
+  "name": "edwin-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio de Edwin Muñoz Isaza",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

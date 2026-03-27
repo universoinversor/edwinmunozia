@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Negocios & IA | Edwin Muñoz Isaza — Tech & Web3 Architect</title>
+    <meta name="description"
+        content="Marketing de conversión, E-commerce y automatización con IA. Negocios digitales por Edwin Muñoz Isaza." />
+    <link rel="canonical" href="https://edwinmunozisaza.com/negocios.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edwinmunozisaza.com/negocios.html" />
+    <meta property="og:title" content="Negocios Digitales & IA | Edwin Muñoz Isaza" />
+    <meta property="og:description"
+        content="E-commerce, Software POS y automatización con IA. Sistemas que escalan capital." />
+    <meta property="og:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Negocios & IA | Edwin Muñoz Isaza" />
+    <meta name="twitter:description" content="E-commerce, POS y automatización con IA." />
+    <meta name="twitter:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="theme-color" content="#0b0f1a" />
+</head>
+
+
+<body data-theme="negocios">
+
+    <div class="page-indicator page-indicator--neg"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+    <div class="scroll-progress"></div>
+
+    <div class="loader" id="loader">
+        <div class="loader__inner">
+            <div class="loader__logo">🎯<span style="color:var(--pink)">.</span></div>
+            <div class="loader__bar">
+                <div class="loader__progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader__status mono" id="loaderStatus">Optimizando ROI...</div>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="/index" class="nav__logo" aria-label="Volver al inicio">EM<span class="dot" aria-hidden="true">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="/index" class="nav__link">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link active">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <div class="nav__tools" style="display:flex; align-items:center; gap:12px;">
+                <div class="lang-switcher" style="display:flex; background:rgba(255,255,255,0.05); border:1px solid var(--b-1); border-radius:8px; padding:3px; backdrop-filter:blur(5px);">
+                    <button class="lang-btn active" data-lang="es" style="background:transparent; color:var(--t-1); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">ES</button>
+                    <button class="lang-btn" data-lang="en" style="background:transparent; color:var(--t-2); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">EN</button>
+                </div>
+                <button class="btn btn--outline web3-connect-btn" style="padding:0 14px; font-size:0.8rem; height:34px; display:flex; align-items:center; gap:6px;"><i data-lucide="wallet" style="width:14px; height:14px;"></i> Connect</button>
+                <a href="#contacto-neg" class="btn btn--glow nav__cta" style="height:34px; padding:0 20px; line-height:34px; font-size:0.85rem;" aria-label="Solicitar consultoría de negocios e IA">Escalar</a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <style>
+            .lang-btn.active { background: var(--pink); color: #fff !important; }
+            .nav__cta { display: none; }
+            @media (min-width: 900px) {
+                .nav__cta { display: inline-flex; }
+                .nav__tools { gap: 20px; }
+            }
+            @media (max-width: 900px) {
+                .nav__tools { margin-right: 40px; }
+            }
+        </style>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link">Inicio</a>
+        <a href="/desarrollo" class="mob-link">Desarrollo</a>
+        <a href="/cripto" class="mob-link">Cripto</a>
+        <a href="/marketing" class="mob-link">Marketing</a>
+        <a href="/negocios" class="mob-link active">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="/index#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="/index#inicio" class="app-nav-item">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="/index#pilares" class="app-nav-item">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="#contacto-neg" class="app-nav-item item--cta">
+            <i data-lucide="message-square"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+    <div class="page-wrap">
+        <!-- HERO NEGOCIOS -->
+        <section class="hero" id="inicio-neg">
+            <div class="hero__bg hero--neg">
+                <div class="grid" aria-hidden="true"></div>
+            </div>
+            <div class="container hero__content">
+                <div class="hero__eyebrow">
+                    <span class="status-dot"></span>
+                    <span class="mono">Strategic Growth &bull; AI Automation</span>
+                </div>
+                <h1 class="hero__name" style="font-size: clamp(2.5rem, 12vw, 8.5rem); line-height: 0.9;">
+                    <span class="hero__name-line">AI</span>
+                    <span class="hero__name-line glitch" data-text="Driven"
+                        style="background:var(--g-green);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Driven</span>
+                    <span class="hero__name-line">Marketing</span>
+                </h1>
+                <div class="hero__roles">
+                    <span class="mono">// </span>
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor-blink" style="color:var(--accent)">|</span>
+                </div>
+                <p class="hero__lema">Sistemas de ingresos automatizados. Arquitecto de <strong>Sistemas de Alta
+                        Escala</strong>:
+                    E-commerce potenciado por Inteligencia Artificial y escala predecible.</p>
+
+                <div class="hero__ctas">
+                    <a href="#contacto-neg" class="btn btn--primary btn--lg btn--pulse">Escalar mi Negocio <span
+                            class="arrow">↗</span></a>
+                    <a href="#servicios-neg" class="btn btn--outline btn--pulse-alt">Sistemas de Venta</a>
+                </div>
+                <div class="hero__metrics">
+                    <div class="metric"><span class="metric__val" data-count="12">0</span><sup
+                            style="color:var(--green)">+</sup><span class="metric__label">Years Exp.</span></div>
+                    <div class="metric__sep"></div>
+                    <div class="metric"><span class="metric__val" data-count="10">0</span><sup
+                            style="color:var(--green)">+</sup><span class="metric__label">Automations</span></div>
+                    <div class="metric__sep"></div>
+                    <div class="metric"><span class="metric__val" data-count="100">0</span><sup
+                            style="color:var(--green)">%</sup><span class="metric__label">Data Driven</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS NEGOCIOS -->
+        <section class="section" id="servicios-neg">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label">Sistemas de Escala</div>
+                    <h2 class="section-title">Ingeniería de <span class="grad-text">Ingresos</span></h2>
+                    <p class="body-md text-muted max-560">Diseñamos la infraestructura que permite a tu negocio crecer
+                        sin fricción.</p>
+                </div>
+                <div class="servicios__grid">
+                    <article class="svc-card svc-card--green-feat sr sr-d1">
+                        <div class="svc-card__num mono">01</div>
+                        <div class="svc-card__icon"><i data-lucide="banknote"></i></div>
+                        <h3 class="svc-card__title">Conversion Funnels</h3>
+                        <p class="svc-card__desc">Diseñamos infraestructuras de venta que optimizan cada dólar invertido
+                            para un retorno (ROI) masivo y sostenible.</p>
+                    </article>
+                    <article class="svc-card sr sr-d2">
+                        <div class="svc-card__num mono">02</div>
+                        <div class="svc-card__icon"><i data-lucide="bot"></i></div>
+                        <h3 class="svc-card__title">AI Dynamic Agents</h3>
+                        <p class="svc-card__desc">Sistemas de atención y cierre automático vía WhatsApp y CRM,
+                            integrados con la potencia de agentes inteligentes.</p>
+                    </article>
+                    <article class="svc-card sr sr-d3">
+                        <div class="svc-card__num mono">03</div>
+                        <div class="svc-card__icon"><i data-lucide="shopping-cart"></i></div>
+                        <h3 class="svc-card__title">E-commerce Elite</h3>
+                        <p class="svc-card__desc">Desarrollo en <strong>Shopify y Custom Stacks</strong> enfocados en
+                            máxima velocidad, CRO y retención de usuarios.</p>
+                    </article>
+
+                </div>
+
+                <div class="section-head center sr" style="margin-top: 60px;">
+                    <h3 class="mono" style="color:var(--cyan); margin-bottom:10px;">// Consultoría Estratégica</h3>
+                    <p class="body-md text-muted">Alinea tu inversión con los objetivos de tu negocio.</p>
+                </div>
+                <div class="dynamic-services marketplace-grid" data-category="estrategia"></div>
+
+                <div class="section-head center sr" style="margin-top: 60px;">
+                    <h3 class="mono" style="color:var(--green); margin-bottom:10px;">// Tiendas E-commerce</h3>
+                    <p class="body-md text-muted">Desarrollo de tiendas de alta conversión.</p>
+                </div>
+                <div class="dynamic-services marketplace-grid" data-category="ecommerce"></div>
+
+            </div>
+        </section>
+
+        <!-- WORKFLOW SECTION -->
+        <section class="workflow-section" id="metodologia-neg">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--blue">El Proceso</div>
+                    <h2 class="section-title">Estructura de <span class="grad-text">Escala</span></h2>
+                </div>
+                <div class="wf-grid">
+                    <div class="wf-card glass sr sr-d1">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">01</div>
+                        <h3 class="wf-card__title">Auditoría</h3>
+                        <p class="wf-card__desc">Mapeo detallado de procesos manuales y flujos de datos para identificar
+                            puntos de automatización crítica.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d2">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">02</div>
+                        <h3 class="wf-card__title">Arquitectura</h3>
+                        <p class="wf-card__desc">Diseño de agentes inteligentes y flujos n8n/Make que conectan tus
+                            herramientas actuales.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d3">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">03</div>
+                        <h3 class="wf-card__title">Integración</h3>
+                        <p class="wf-card__desc">Despliegue técnico de los sistemas y entrenamiento de los modelos de IA
+                            con tu base de conocimiento.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d4">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">04</div>
+                        <h3 class="wf-card__title">Mantenimiento</h3>
+                        <p class="wf-card__desc">Ajuste continuo de los flujos para asegurar que la empresa opere de
+                            forma autónoma y eficiente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL PROOF SECTION -->
+        <section class="proof-section" id="social-proof-neg">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--green">Sistemas de Valor</div>
+                    <h2 class="section-title">Resultados de <span class="grad-text--green">Escala</span></h2>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card glass sr sr-d1">
+                        <span class="result-card__val">3x</span>
+                        <span class="result-card__label">Crecimiento en 6 Meses</span>
+                    </div>
+                    <div class="result-card glass sr sr-d2">
+                        <span class="result-card__val">100%</span>
+                        <span class="result-card__label">Autónomo (AI Based)</span>
+                    </div>
+                    <div class="result-card glass sr sr-d3">
+                        <span class="result-card__val">+50%</span>
+                        <span class="result-card__label">Eficiencia Operativa</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- WHY WORK WITH ME BIZ -->
+        <section class="section" id="ventaja-neg">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--green">Escala Sin Límites</div>
+                    <h2 class="section-title">Tu oficina en <span class="grad-text--green">Piloto Automático</span></h2>
+                </div>
+                <div class="svc-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h4 class="auth-card__title">Arquitectura No-Code/Low-Code</h4>
+                        <p class="auth-card__data">Conectamos CRM, ADS y Operaciones mediante <strong>n8n/Make</strong>.
+                            Esto permite que tu empresa trabaje 24/7 sin errores humanos, reduciendo la carga
+                            administrativa en un <strong>80%</strong>.</p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h4 class="auth-card__title">Agentes de Cierre IA</h4>
+                        <p class="auth-card__data">Nuestros agentes no solo "responden". Están entrenados con
+                            <strong>Estrategias de Persuasión</strong> para calificar leads y agendar citas
+                            automáticamente, aumentando el ratio de conversión en un <strong>25%</strong>.
+                        </p>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h4 class="auth-card__title">Dashboard de Decisiones</h4>
+                        <p class="auth-card__data">Integramos <strong>Data Lakes</strong> que unifican tus métricas de
+                            pauta y ventas. Toma decisiones basadas en rentabilidad real por producto, no en intuición.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- AUTHORITY & INDUSTRY DATA -->
+        <section class="authority-section">
+            <div class="container">
+                <div class="auth-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h3 class="auth-card__title">Impacto de la IA en E-commerce</h3>
+                        <p class="auth-card__data">La implementación de agentes de IA incrementa las ventas promedio en
+                            un <strong>6.2%</strong> y reduce los costos operativos en un <strong>7.2%</strong>. La
+                            personalización algorítmica puede generar hasta un <strong>40%</strong> más de ingresos
+                            netos.</p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h3 class="auth-card__title">Vértice de Rentabilidad (LTV)</h3>
+                        <p class="auth-card__data">Optimizamos el valor a largo plazo de cada cliente para asegurar un
+                            crecimiento sostenible y predecible:</p>
+                        <div class="formula-box">
+                            <code>LTV = AOV x Frecuencia x Vida Útil</code>
+                            <span>Lifetime Value | Objetivo: LTV/CAC > 3:1</span>
+                        </div>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h3 class="auth-card__title">Eficiencia Operativa</h3>
+                        <p class="auth-card__data">Los negocios que integran flujos automatizados (n8n/Make) logran una
+                            mejora del <strong>55%</strong> en eficiencia operativa, permitiendo escalar sin aumentar
+                            linealmente la nómina.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAFOLIO NEGOCIOS -->
+        <section class="section" id="proyectos-neg">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--green">Portafolio</div>
+                    <h2 class="section-title">Sistemas <span class="grad-text--green">Desplegados</span></h2>
+                </div>
+                <div class="works-grid" data-category="Negocios,IA,AI"></div>
+            </div>
+        </section>
+
+        <!-- CONTACTO NEGOCIOS -->
+        <section class="section" id="contacto-neg">
+            <div class="container">
+                <div class="section-head sr">
+                    <div class="label label--green">Contacto</div>
+                    <h2 class="section-title">Hablemos <span class="grad-text--green">directo.</span></h2>
+                </div>
+                <div class="contacto__grid">
+                    <div class="contacto__left sr">
+                        <p class="body-lg text-muted">¿Buscas escalar tu negocio con IA o necesitas una estrategia de
+                            marketing de alta conversión? Escríbeme y diseñemos un sistema que trabaje por ti.</p>
+                        <div class="clinks" style="margin-top:28px">
+                            <a href="https://wa.link/iqra1o" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">💬</div>
+                                <div>
+                                    <div class="clink__label mono">WhatsApp</div>
+                                    <div class="clink__val">wa.link/iqra1o →</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                            <a href="https://t.me/edwinMnzia" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">✈️</div>
+                                <div>
+                                    <div class="clink__label mono">Telegram</div>
+                                    <div class="clink__val">@edwinMnzia</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contacto__form glass sr sr-d2" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="fgroup"><label for="f-nombre" class="mono">Nombre</label><input type="text"
+                                    id="f-nombre" name="nombre" placeholder="Tu nombre" required /></div>
+                            <div class="fgroup"><label for="f-email" class="mono">Email</label><input type="email"
+                                    id="f-email" name="email" placeholder="tu@email.com" required /></div>
+                        </div>
+                        <div class="fgroup">
+                            <label for="f-servicio" class="mono">Servicio</label>
+                            <select id="f-servicio" name="servicio" required>
+                                <option value="biz" selected>Negocios & IA Management
+                                </option>
+                                <option value="mkt">Marketing de Conversión</option>
+                                <option value="ecommerce">E-commerce Elite</option>
+                            </select>
+                        </div>
+                        <div class="fgroup"><label for="f-msg" class="mono">Mensaje</label><textarea id="f-msg"
+                                name="mensaje" rows="4" placeholder="Háblame de tu negocio y tus objetivos..."
+                                required></textarea></div>
+                        <button type="submit" class="btn btn--primary btn--full btn--pulse" id="f-submit">Escalar ahora
+                            →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <div class="footer__logo">EM<span class="dot">.</span></div>
+                        <p class="mono footer__tagline">"Sistemas que escalan y contenido que
+                            posiciona tu marca en la élite."</p>
+                    </div>
+                    <nav class="footer__nav">
+                        <a href="/index">Inicio</a>
+                        <a href="/desarrollo">Desarrollo</a>
+                        <a href="/cripto">Cripto</a>
+                        <a href="/marketing">Marketing</a>
+                        <a href="/negocios">Negocios</a>
+                        <a href="/diplomado">Diplomado</a>
+                    </nav>
+                </div>
+                <div class="footer__bottom">
+                    <span class="mono">© 2026 Edwin Muñoz Isaza. Todos los derechos
+                        reservados.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+    <script src="/services-ui.js"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="/global-enhancers.js" defer></script>
+    <script src="/ai-agent.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => { });
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            const roles = ['AI Marketing Strategist', 'Growth Hacker', 'Conversion Specialist', 'Sales Funnel Architect', 'E-commerce Expert'];
+            if (typeof initTypewriter === 'function') initTypewriter(roles);
+        });
+    </script>
+
+</body>
+
+</html>

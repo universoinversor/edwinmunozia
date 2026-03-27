@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketing de Conversión | Edwin Muñoz Isaza — Tech & Web3 Architect</title>
+    <meta name="description" content="Estrategias de pauta, contenido y crecimiento digital por Edwin Muñoz Isaza." />
+    <link rel="canonical" href="https://edwinmunozisaza.com/marketing.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edwinmunozisaza.com/marketing.html" />
+    <meta property="og:title" content="Marketing de Conversión | Edwin Muñoz Isaza" />
+    <meta property="og:description"
+        content="Meta Ads, Tik Tok Ads, Email y Marketing de Performance que genera ROI real." />
+    <meta property="og:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Marketing Digital | Edwin Muñoz Isaza" />
+    <meta name="twitter:description" content="Meta Ads, Tik Tok Ads y Marketing de Performance." />
+    <meta name="twitter:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="theme-color" content="#0b0f1a" />
+</head>
+
+
+<body data-theme="marketing">
+
+    <div class="page-indicator"></div>
+    <div class="ambient-light" id="ambientLight"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <div class="loader" id="loader">
+        <div class="loader__inner">
+            <div class="loader__logo">EM<span style="color:var(--pink)">.</span></div>
+            <div class="loader__bar">
+                <div class="loader__progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader__status mono" id="loaderStatus">Optimizando campañas...</div>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="/index" class="nav__logo" aria-label="Volver al inicio">EM<span class="dot" aria-hidden="true">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="/index" class="nav__link">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link active">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <div class="nav__tools" style="display:flex; align-items:center; gap:12px;">
+                <div class="lang-switcher" style="display:flex; background:rgba(255,255,255,0.05); border:1px solid var(--b-1); border-radius:8px; padding:3px; backdrop-filter:blur(5px);">
+                    <button class="lang-btn active" data-lang="es" style="background:transparent; color:var(--t-1); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">ES</button>
+                    <button class="lang-btn" data-lang="en" style="background:transparent; color:var(--t-2); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">EN</button>
+                </div>
+                <button class="btn btn--outline web3-connect-btn" style="padding:0 14px; font-size:0.8rem; height:34px; display:flex; align-items:center; gap:6px;"><i data-lucide="wallet" style="width:14px; height:14px;"></i> Connect</button>
+                <a href="#contacto-mkt" class="btn btn--glow nav__cta" style="height:34px; padding:0 20px; line-height:34px; font-size:0.85rem;" aria-label="Solicitar consultoría de marketing e IA">Consultar</a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <style>
+            .lang-btn.active { background: var(--pink); color: #fff !important; }
+            .nav__cta { display: none; }
+            @media (min-width: 900px) {
+                .nav__cta { display: inline-flex; }
+                .nav__tools { gap: 20px; }
+            }
+            @media (max-width: 900px) {
+                .nav__tools { margin-right: 40px; }
+            }
+        </style>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link">Inicio</a>
+        <a href="/desarrollo" class="mob-link">Desarrollo</a>
+        <a href="/cripto" class="mob-link">Cripto</a>
+        <a href="/marketing" class="mob-link active">Marketing</a>
+        <a href="/negocios" class="mob-link">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="/index#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="/index#inicio" class="app-nav-item">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="/index#pilares" class="app-nav-item">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="#contacto-mkt" class="app-nav-item item--cta">
+            <i data-lucide="message-square"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+    <div class="page-wrap">
+        <!-- HERO MARKETING -->
+        <section class="hero" id="inicio-mkt">
+            <div class="hero__bg hero--marketing">
+                <div class="grid" aria-hidden="true"></div>
+            </div>
+            <div class="container hero__content">
+                <div class="hero__eyebrow">
+                    <span class="status-dot"></span>
+                    <span class="mono">Conversion &bull; Content &bull; Growth</span>
+                </div>
+                <h1 class="hero__name" style="font-size: clamp(2.5rem, 12vw, 8.5rem); line-height: 0.9;">
+                    <span class="hero__name-line">Creative</span>
+                    <span class="hero__name-line grad-text">Impact</span>
+                </h1>
+                <div class="hero__roles">
+                    <span class="mono">// </span>
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor-blink" style="color:var(--accent)">|</span>
+                </div>
+                <p class="hero__lema">Estrategias de pauta y contenido que <em
+                        style="color:var(--accent);font-style:normal">posicionan tu marca en la élite.</em> Fundador de
+                    <strong>Toons</strong>: Agencia de contenido viral.
+                </p>
+
+                <div class="hero__ctas">
+                    <span class="magnetic-wrap"><a href="#servicios-mkt"
+                            class="btn btn--primary btn--lg btn--pulse magnetic">Consultar campaña <span
+                                class="arrow">↗</span></a></span>
+                    <span class="magnetic-wrap"><a href="https://www.instagram.com/edwinmunozisaza/" target="_blank"
+                            class="btn btn--outline btn--pulse-alt magnetic">Casos de éxito</a></span>
+                </div>
+                <div class="hero__metrics">
+                    <div class="metric glass"><span class="metric__val" data-count="1">0</span><sup
+                            style="color:var(--pink)">M+</sup><span class="metric__label">Reach</span></div>
+                    <div class="metric__sep"></div>
+                    <div class="metric glass"><span class="metric__val" data-count="12">0</span><sup
+                            style="color:var(--pink)">+</sup><span class="metric__label">Years Exp.</span></div>
+                    <div class="metric__sep"></div>
+                    <div class="metric glass"><span class="metric__val" data-count="10">0</span><sup
+                            style="color:var(--pink)">x</sup><span class="metric__label">Avg ROAS</span></div>
+                </div>
+
+                <div class="hero__visual sr">
+                    <div class="hologram-frame">
+                        <img src="/assets/img/edwin-tech-main.png" alt="Edwin Muñoz" class="hologram-img">
+                        <div class="hologram-glitch"></div>
+                        <div class="hologram-scanline"></div>
+                    </div>
+                </div>
+                
+                <div id="marketing-video-container" style="display:none; width: 100%; max-width: 900px; margin: 60px auto 0; position:relative; z-index:2;"></div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS MARKETING -->
+        <section class="section" id="servicios-mkt">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--pink">Servicios</div>
+                    <h2 class="section-title">Impulso <span class="grad-text">Digital</span></h2>
+                </div>
+                <div class="servicios__grid">
+                    <article class="svc-card sr sr-d1">
+                        <div class="svc-card__num mono">01</div>
+                        <div class="svc-card__icon"><i data-lucide="megaphone"></i></div>
+                        <h3 class="svc-card__title">Performance Ads</h3>
+                        <p class="svc-card__desc">Gestión profesional de <strong>Meta & Google Ads</strong>. Maximizamos
+                            el ROAS mediante segmentación de datos y optimización de escala.</p>
+                    </article>
+                    <article class="svc-card sr sr-d2">
+                        <div class="svc-card__num mono">02</div>
+                        <div class="svc-card__icon"><i data-lucide="video"></i></div>
+                        <h3 class="svc-card__title">Viral Content (Toons)</h3>
+                        <p class="svc-card__desc">Creación de contenido audiovisual bajo la metodología
+                            <strong>Toons</strong>. Vídeos que retienen, educan y venden en Reels/TikTok.
+                        </p>
+                    </article>
+                    <article class="svc-card sr sr-d3">
+                        <div class="svc-card__num mono">03</div>
+                        <div class="svc-card__icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="svc-card__title">Growth Architecture</h3>
+                        <p class="svc-card__desc">Estrategias integrales de crecimiento para marcas. Funnels
+                            automatizados que transforman audiencia en clientes de por vida.</p>
+                    </article>
+
+                </div>
+
+                <div class="section-head center sr" style="margin-top: 60px;">
+                    <h3 class="mono" style="color:var(--cyan); margin-bottom:10px;">// Soluciones & Precios</h3>
+                    <p class="body-md text-muted">Alinea tu inversión con los objetivos de crecimiento de tu marca.</p>
+                </div>
+                <!-- Firebase Dynamic Market -->
+                <div class="dynamic-services marketplace-grid" data-category="marketing">
+                    <p class="mono text-center text-muted" style="grid-column: 1/-1;">Sincronizando catálogo...</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WORKFLOW SECTION -->
+        <section class="workflow-section" id="metodologia-mkt">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--pink">El Método</div>
+                    <h2 class="section-title">Estrategia de <span class="grad-text">Impacto</span></h2>
+                </div>
+                <div class="wf-grid">
+                    <div class="wf-card glass sr sr-d1">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);">01</div>
+                        <h3 class="wf-card__title">Diagnóstico</h3>
+                        <p class="wf-card__desc">Análisis de embudos actuales, CPA, ROAS y saturación de audiencias para
+                            identificar oportunidades de mejora.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d2">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);">02</div>
+                        <h3 class="wf-card__title">Funnel Design</h3>
+                        <p class="wf-card__desc">Diseño de la arquitectura de venta y selección de la narrativa creativa
+                            para maximizar la retención.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d3">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);">03</div>
+                        <h3 class="wf-card__title">Lanzamiento</h3>
+                        <p class="wf-card__desc">Despliegue de campañas y distribución de contenido siguiendo la
+                            metodología viral de alta conversión.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d4">
+                        <div class="wf-card__step"
+                            style="background:var(--accent); box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);">04</div>
+                        <h3 class="wf-card__title">Escala Data-Driven</h3>
+                        <p class="wf-card__desc">Optimización basada en números reales, escalando presupuestos solo en
+                            los activos con mayor ROAS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR SECTION -->
+        <section class="roi-section" id="calculadora-roi">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--pink">Simulador de Impacto</div>
+                    <h2 class="section-title">Calcula tu <span class="grad-text">Retorno de Inversión</span></h2>
+                    <p class="section-desc">Ajusta tu inversión publicitaria y proyecta ingresos basados en nuestros
+                        benchmarks de ROAS institucional (3.5x promediado).</p>
+                </div>
+
+                <div class="roi-card glass sr">
+                    <div class="roi-input-group">
+                        <label>Inversión Mensual Proyectada: <span id="roi-invest" class="mono"
+                                style="color:var(--accent); margin-left:10px;">$5,000</span></label>
+                        <input type="range" min="1000" max="50000" step="500" value="5000" class="roi-range"
+                            id="roi-range">
+                    </div>
+
+                    <div class="roi-display">
+                        <div class="roi-box">
+                            <span class="roi-box__label">Ingresos Proyectados (3.5x ROAS)</span>
+                            <div class="roi-box__val" id="roi-result">$17,500</div>
+                        </div>
+                        <div class="roi-box" style="text-align: right;">
+                            <span class="roi-box__label">Eficiencia vs Industria</span>
+                            <div class="roi-box__val" style="color:var(--blue)">+28%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY WORK WITH ME MKT -->
+        <section class="section" id="ventaja-mkt">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--pink">Valor Diferencial</div>
+                    <h2 class="section-title">Por qué mi estrategia <span class="grad-text">Escala</span></h2>
+                </div>
+                <div class="svc-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h4 class="auth-card__title">Funnels de Alta Complejidad</h4>
+                        <p class="auth-card__data">No usamos landings estáticas. Creamos <strong>Multivariate
+                                Conditional Funnels</strong> que adaptan la oferta en tiempo real según el
+                            comportamiento del usuario, aumentando el LTV en un 40%.</p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h4 class="auth-card__title">Creative Engineering</h4>
+                        <p class="auth-card__data">Combinamos narrativa viral con <strong>Ingeniería de Datos</strong>.
+                            Analizamos los primeros 3 segundos de retención para iterar creativos de forma científica,
+                            no basada en "gustos".</p>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h4 class="auth-card__title">Paid Traffic Elite</h4>
+                        <p class="auth-card__data">Gestión avanzada de <strong>Offline Conversions API</strong>.
+                            Alimentamos los algoritmos de Meta y Google con datos reales de compra, no solo clicks,
+                            forzando al sistema a buscar clientes VIP.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- SOCIAL PROOF SECTION -->
+        <section class="proof-section" id="social-proof-mkt">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--pink">Performance Metrics</div>
+                    <h2 class="section-title">Resultados que <span class="grad-text">Venden</span></h2>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card glass sr sr-d1">
+                        <span class="result-card__val">4.5x</span>
+                        <span class="result-card__label">ROAS Promedio</span>
+                    </div>
+                    <div class="result-card glass sr sr-d2">
+                        <span class="result-card__val">10M+</span>
+                        <span class="result-card__label">Alcance Total</span>
+                    </div>
+                    <div class="result-card glass sr sr-d3">
+                        <span class="result-card__val">30%</span>
+                        <span class="result-card__label">Reducción en CPA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- AUTHORITY & INDUSTRY DATA -->
+        <section class="authority-section">
+            <div class="container">
+                <div class="auth-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h3 class="auth-card__title">Benchmarks de Pauta 2025</h3>
+                        <p class="auth-card__data">La mediana de <strong>ROAS</strong> sitúa a Google Ads en
+                            <strong>3.3x</strong> y Meta en <strong>2.2x</strong>. En nichos de tecnología y SaaS,
+                            campañas optimizadas pueden superar el <strong>5:1</strong> mediante segmentación de alta
+                            intención.
+                        </p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h3 class="auth-card__title">Fórmula de Retorno (ROAS)</h3>
+                        <p class="auth-card__data">Calculamos la eficiencia bruta de cada dólar invertido en publicidad
+                            digital:</p>
+                        <div class="formula-box">
+                            <code>ROAS = Inmuebles / Inversión Ads</code>
+                            <span>Revenue / Ad Spend | Objetivo Ideal: 300% - 500%</span>
+                        </div>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h3 class="auth-card__title">Impacto Audiovisual</h3>
+                        <p class="auth-card__data">El <strong>92%</strong> de los usuarios de TikTok toman acción tras
+                            ver un video. La retención en los primeros 3 segundos aumenta la conversión hasta en un
+                            <strong>37%</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAFOLIO MARKETING -->
+        <section class="section" id="proyectos-mkt">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--pink">Portafolio</div>
+                    <h2 class="section-title">Casos de <span class="grad-text">Crecimiento</span></h2>
+                </div>
+                <div class="works-grid" data-category="Marketing,Growth"></div>
+            </div>
+        </section>
+
+        <!-- CONTACTO MKT -->
+        <section class="section" id="contacto-mkt">
+            <div class="container">
+                <div class="section-head sr">
+                    <div class="label label--pink">Contacto</div>
+                    <h2 class="section-title">Hablemos de <span class="grad-text">Resultados.</span></h2>
+                </div>
+                <div class="contacto__grid">
+                    <div class="contacto__left sr">
+                        <p class="body-lg text-muted">¿Necesitas una estrategia que realmente convierta? Escríbeme y
+                            diseñemos el embudo de ventas que tu marca necesita hoy.</p>
+                        <div class="clinks" style="margin-top:28px">
+                            <a href="https://wa.link/iqra1o" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">💬</div>
+                                <div>
+                                    <div class="clink__label mono">WhatsApp</div>
+                                    <div class="clink__val">wa.link/iqra1o →</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                            <a href="https://t.me/edwinMnzia" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">✈️</div>
+                                <div>
+                                    <div class="clink__label mono">Telegram</div>
+                                    <div class="clink__val">@edwinMnzia</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contacto__form glass sr sr-d2" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="fgroup"><label for="f-nombre" class="mono">Nombre</label><input type="text"
+                                    id="f-nombre" name="nombre" placeholder="Tu nombre" required /></div>
+                            <div class="fgroup"><label for="f-email" class="mono">Email</label><input type="email"
+                                    id="f-email" name="email" placeholder="tu@email.com" required /></div>
+                        </div>
+                        <div class="fgroup">
+                            <label for="f-servicio" class="mono">Servicio</label>
+                            <select id="f-servicio" name="servicio" required>
+                                <option value="ads" selected>Meta & Google Ads</option>
+                                <option value="content">Content Strategy</option>
+                                <option value="growth">Growth Marketing</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="fgroup"><label for="f-msg" class="mono">Mensaje</label><textarea id="f-msg"
+                                name="mensaje" rows="4" placeholder="Háblame de tu marca y tus metas..."
+                                required></textarea></div>
+                        <button type="submit" class="btn btn--primary btn--full btn--pulse" id="f-submit">Escalar mi
+                            marca
+                            →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <div class="footer__logo">EM<span class="dot">.</span></div>
+                        <p class="mono footer__tagline">"Estrategias de pauta y contenido que posicionan tu marca en la
+                            élite digital."</p>
+                    </div>
+                    <nav class="footer__nav">
+                        <a href="/index">Inicio</a>
+                        <a href="/desarrollo">Desarrollo</a>
+                        <a href="/cripto">Cripto</a>
+                        <a href="/marketing">Marketing</a>
+                        <a href="/negocios">Negocios</a>
+                        <a href="/diplomado">Diplomado</a>
+                    </nav>
+                </div>
+                <div class="footer__bottom">
+                    <span class="mono">© 2026 Edwin Muñoz Isaza. Todos los derechos reservados.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+    <script src="/services-ui.js"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="/global-enhancers.js" defer></script>
+    <script src="/ai-agent.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => { });
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            const roles = ['Performance Marketer', 'Content Strategist', 'Ads Specialist', 'Creative Director', 'Growth Manager'];
+            if (typeof initTypewriter === 'function') initTypewriter(roles);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desarrollo Web3 & Blockchain | Edwin Muñoz Isaza — Arquitecto de muchos sistemas</title>
+    <meta name="description"
+        content="Ingeniería Web3, Smart Contracts auditables y arquitectura descentralizada por Edwin Muñoz Isaza." />
+    <link rel="canonical" href="https://edwinmunozisaza.com/desarrollo.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edwinmunozisaza.com/desarrollo.html" />
+    <meta property="og:title" content="Web3 & Blockchain Dev | Edwin Muñoz Isaza" />
+    <meta property="og:description" content="Smart Contracts, DApps y arquitectura descentralizada de alta escala." />
+    <meta property="og:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Web3 Dev | Edwin Muñoz Isaza" />
+    <meta name="twitter:description" content="Smart Contracts, DApps y arquitectura descentralizada." />
+    <meta name="twitter:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="theme-color" content="#0b0f1a" />
+</head>
+
+
+<body data-theme="dev">
+
+    <div class="page-indicator"></div>
+    <div class="ambient-light" id="ambientLight"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+    <div class="scroll-progress"></div>
+
+    <div class="loader" id="loader">
+        <div class="loader__inner">
+            <div class="loader__logo">EM<span style="color:var(--purple)">.</span></div>
+            <div class="loader__bar">
+                <div class="loader__progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader__status mono" id="loaderStatus">Compilando contratos...</div>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="/index" class="nav__logo" aria-label="Volver al inicio">EM<span class="dot" aria-hidden="true">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="/index" class="nav__link">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link active">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <div class="nav__tools" style="display:flex; align-items:center; gap:12px;">
+                <div class="lang-switcher" style="display:flex; background:rgba(255,255,255,0.05); border:1px solid var(--b-1); border-radius:8px; padding:3px; backdrop-filter:blur(5px);">
+                    <button class="lang-btn active" data-lang="es" style="background:transparent; color:var(--t-1); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">ES</button>
+                    <button class="lang-btn" data-lang="en" style="background:transparent; color:var(--t-2); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">EN</button>
+                </div>
+                <button class="btn btn--outline web3-connect-btn" style="padding:0 14px; font-size:0.8rem; height:34px; display:flex; align-items:center; gap:6px;"><i data-lucide="wallet" style="width:14px; height:14px;"></i> Connect</button>
+                <a href="#contacto-dev" class="btn btn--purple nav__cta" style="height:34px; padding:0 20px; line-height:34px; font-size:0.85rem;">Consultar</a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <style>
+            .lang-btn.active { background: var(--pink); color: #fff !important; }
+            .nav__cta { display: none; }
+            @media (min-width: 900px) {
+                .nav__cta { display: inline-flex; }
+                .nav__tools { gap: 20px; }
+            }
+            @media (max-width: 900px) {
+                .nav__tools { margin-right: 40px; }
+            }
+        </style>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link">Inicio</a>
+        <a href="/desarrollo" class="mob-link active">Desarrollo</a>
+        <a href="/cripto" class="mob-link">Cripto</a>
+        <a href="/marketing" class="mob-link">Marketing</a>
+        <a href="/negocios" class="mob-link">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="/index#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="/index#inicio" class="app-nav-item">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="/index#pilares" class="app-nav-item active">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="#contacto-dev" class="app-nav-item item--cta">
+            <i data-lucide="message-square"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+
+    <div class="page-wrap">
+        <!-- HERO DESARROLLO -->
+        <section class="hero" id="inicio-dev">
+            <div class="hero__bg hero--dev">
+                <div class="grid" aria-hidden="true"></div>
+            </div>
+            <div class="container hero__content">
+                <div class="hero__eyebrow">
+                    <span class="status-dot"></span>
+                    <span class="mono">Full-Stack Web3 &bull; Smart Contracts</span>
+                </div>
+                <h1 class="hero__name" style="font-size: clamp(2.5rem, 12vw, 8.5rem); line-height: 0.9;">
+                    <span class="hero__name-line">Dev</span>
+                    <span class="hero__name-line grad-text">Factory</span>
+                </h1>
+                <div class="hero__roles">
+                    <span class="mono">// </span>
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor-blink" style="color:var(--accent)">|</span>
+                </div>
+                <p class="hero__lema">Ingeniería Web3 auditable y sistemas descentralizados. Especializado en
+                    <strong>Solidity</strong> y en el ecosistema <strong>Rust</strong> para protocolos de alta
+                    seguridad.
+                </p>
+
+                <div class="hero__ctas">
+                    <span class="magnetic-wrap"><a href="#proyectos-dev"
+                            class="btn btn--primary btn--lg btn--pulse magnetic">Ver
+                            portafolio <span class="arrow">↗</span></a></span>
+                    <span class="magnetic-wrap"><a href="#contacto-dev"
+                            class="btn btn--outline btn--pulse-alt magnetic">Tech Stack
+                            v6</a></span>
+                </div>
+                <div class="hero__metrics">
+                    <div class="metric glass"><span class="metric__val" data-count="25">0</span><sup
+                            style="color:var(--purple)">+</sup><span class="metric__label">Contracts</span></div>
+                    <div class="metric__sep"></div>
+                    <div class="metric glass"><span class="metric__val" data-count="50">0</span><sup
+                            style="color:var(--purple)">+</sup><span class="metric__label">DApps</span></div>
+                    <div class="metric__sep"></div>
+                    <div class="metric glass"><span class="metric__val" data-count="100">0</span><sup
+                            style="color:var(--purple)">%</sup><span class="metric__label">Secure</span></div>
+                </div>
+
+                <div class="hero__visual sr">
+                    <div class="hologram-frame">
+                        <img src="/assets/img/edwin-tech-main.png" alt="Edwin Muñoz" class="hologram-img">
+                        <div class="hologram-glitch"></div>
+                        <div class="hologram-scanline"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK TECNOLÓGICO -->
+        <section class="section" id="stack">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Stack</div>
+                    <h2 class="section-title">El motor <span class="grad-text">Detrás</span></h2>
+                </div>
+                <div class="stack-wrap">
+                    <div class="stack-tabs">
+                        <button class="stab active" data-tab="evm">Blockchain / EVM</button>
+                        <button class="stab" data-tab="frontend">Modern Frontend</button>
+                        <button class="stab" data-tab="ai">AI / Automation</button>
+                    </div>
+                    <div class="stack-panels">
+                        <div class="stack-panel active" id="tab-evm">
+                            <div class="stech-grid">
+                                <div class="stech-item"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg"
+                                        alt="Solidity" loading="lazy"><span>Solidity</span></div>
+                                <div class="stech-item"><img src="https://cryptologos.cc/logos/solana-sol-logo.svg"
+                                        alt="Rust" loading="lazy"><span>Rust</span></div>
+                                <div class="stech-item"><img src="https://cryptologos.cc/logos/polygon-matic-logo.svg"
+                                        alt="EVM" loading="lazy"><span>EVM Nets</span></div>
+                                <div class="stech-item"><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg"
+                                        alt="BNB" loading="lazy"><span>BNB Chain</span></div>
+                            </div>
+                        </div>
+                        <div class="stack-panel" id="tab-frontend" hidden>
+                            <div class="stech-grid">
+                                <div class="stech-item"><i data-lucide="layout"></i><span>Next.js</span></div>
+                                <div class="stech-item"><i data-lucide="code-2"></i><span>Typescript</span></div>
+                                <div class="stech-item"><i data-lucide="palette"></i><span>Tailwind</span></div>
+                                <div class="stech-item"><i data-lucide="box"></i><span>Three.js</span></div>
+                            </div>
+                        </div>
+                        <div class="stack-panel" id="tab-ai" hidden>
+                            <div class="stech-grid">
+                                <div class="stech-item"><i data-lucide="bot"></i><span>OpenAI</span></div>
+                                <div class="stech-item"><i data-lucide="git-branch"></i><span>n8n / Make</span></div>
+                                <div class="stech-item"><i data-lucide="terminal"></i><span>Python</span></div>
+                                <div class="stech-item"><i data-lucide="database"></i><span>Vector DBs</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS DEV -->
+        <section class="section" id="servicios-dev">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Servicios</div>
+                    <h2 class="section-title">Arquitectura <span class="grad-text">Web3</span></h2>
+                </div>
+                <div class="servicios__grid">
+                    <article class="svc-card sr sr-d1">
+                        <div class="svc-card__num mono">01</div>
+                        <div class="svc-card__icon"><i data-lucide="scroll"></i></div>
+                        <h3 class="svc-card__title">Smart Contracts</h3>
+                        <p class="svc-card__desc">Desarrollo en <strong>Solidity y Rust</strong>. Contratos optimizados
+                            para gas, auditables y bajo estándares ERC-20, 721 y 1155.</p>
+                    </article>
+                    <article class="svc-card sr sr-d2">
+                        <div class="svc-card__num mono">02</div>
+                        <div class="svc-card__icon"><i data-lucide="layers"></i></div>
+                        <h3 class="svc-card__title">DApp Development</h3>
+                        <p class="svc-card__desc">Interfaces Web3 integradas con Ethers.js o Wagmi. Experiencias de
+                            usuario fluidas conectadas a redes EVM y Solana.</p>
+                    </article>
+                    <article class="svc-card sr sr-d3">
+                        <div class="svc-card__num mono">03</div>
+                        <div class="svc-card__icon"><i data-lucide="monitor"></i></div>
+                        <h3 class="svc-card__title">Software POS Inteligente</h3>
+                        <p class="svc-card__desc">Sistemas de punto de venta (<strong>POS</strong>) diseñados para
+                            empresas inteligentes. Automatización de inventarios, gestión de ventas y analítica
+                            avanzada.</p>
+                    </article>
+                </div>
+                
+                <div class="section-head center sr" style="margin-top: 60px;">
+                    <h3 class="mono" style="color:var(--purple); margin-bottom:10px;">// Soluciones & Precios</h3>
+                    <p class="body-md text-muted">Alinea tu inversión con los objetivos técnicos de tu protocolo.</p>
+                </div>
+                <!-- Firebase Dynamic Market -->
+                <div class="dynamic-services marketplace-grid" data-category="dev">
+                    <p class="mono text-center text-muted" style="grid-column: 1/-1;">Sincronizando catálogo...</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PORTAFOLIO DEV -->
+        <section class="section" id="proyectos-dev">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Portafolio</div>
+                    <h2 class="section-title">Sistemas <span class="grad-text">Desplegados</span></h2>
+                </div>
+                <div class="works-grid" data-category="Dev"></div>
+            </div>
+        </section>
+
+        <!-- WORKFLOW SECTION -->
+        <section class="workflow-section" id="metodologia-dev">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Metodología</div>
+                    <h2 class="section-title">El Proceso <span class="grad-text">Alpha</span></h2>
+                    <p class="body-md text-muted max-560">Diseñado para maximizar eficiencia y seguridad on-chain.</p>
+                </div>
+                <div class="wf-grid">
+                    <div class="wf-card glass sr sr-d1">
+                        <div class="wf-card__step">01</div>
+                        <h3 class="wf-card__title">Diagnóstico</h3>
+                        <p class="wf-card__desc">Auditoría profunda de la infraestructura actual, seguridad y cuellos de
+                            botella técnicos.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d2">
+                        <div class="wf-card__step">02</div>
+                        <h3 class="wf-card__title">Estrategia</h3>
+                        <p class="wf-card__desc">Diseño de la solución Web3/AI a medida, enfocada en escalabilidad y
+                            bajo consumo de gas.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d3">
+                        <div class="wf-card__step">03</div>
+                        <h3 class="wf-card__title">Despliegue</h3>
+                        <p class="wf-card__desc">Implementación rigurosa bajo estándares institucionales y pruebas en
+                            testnet.</p>
+                    </div>
+                    <div class="wf-card glass sr sr-d4">
+                        <div class="wf-card__step">04</div>
+                        <h3 class="wf-card__title">Optimización</h3>
+                        <p class="wf-card__desc">Monitoreo on-chain y ajustes de performance para asegurar que el
+                            sistema escale sin fricción.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY WORK WITH ME DEV -->
+        <section class="section" id="ventaja-dev">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Valor Diferencial</div>
+                    <h2 class="section-title">Por qué mi código es <span class="grad-text">Diferente</span></h2>
+                </div>
+                <div class="svc-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h4 class="auth-card__title">Eficiencia de Gas v6</h4>
+                        <p class="auth-card__data">No solo escribo código funcional. Optimizamos cada línea para reducir
+                            el consumo de gas en redes principales, ahorrando a nuestros clientes promedios de
+                            <strong>$15,000 USD anuales</strong> en costos operativos on-chain.
+                        </p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h4 class="auth-card__title">Security First</h4>
+                        <p class="auth-card__data">Implemento <strong>Verificación Formal</strong> en contratos
+                            críticos. Esto significa que el código es matemáticamente probado contra fallos de lógica
+                            antes de tocar la red.</p>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h4 class="auth-card__title">Integración IA Nativa</h4>
+                        <p class="auth-card__data">Tus contratos no estarán aislados. Integramos capas de
+                            <strong>Oráculos con IA</strong> que permiten que tu protocolo tome decisiones basadas en
+                            datos del mundo real de forma autónoma.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL PROOF SECTION -->
+        <section class="proof-section" id="social-proof-dev">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Casos de Éxito</div>
+                    <h2 class="section-title">Código que genera <span class="grad-text--purple">Valor</span></h2>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card glass sr sr-d1">
+                        <span class="result-card__val">100%</span>
+                        <span class="result-card__label">Seguridad Smart Contracts</span>
+                    </div>
+                    <div class="result-card glass sr sr-d2">
+                        <span class="result-card__val">Auditado</span>
+                        <span class="result-card__label">Estándar Institucional</span>
+                    </div>
+                    <div class="result-card glass sr sr-d3">
+                        <span class="result-card__val">API v6</span>
+                        <span class="result-card__label">Arquitectura Escalable</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- AUTHORITY & INDUSTRY DATA -->
+        <section class="authority-section">
+            <div class="container">
+                <div class="auth-grid">
+                    <div class="auth-card sr sr-d1">
+                        <h3 class="auth-card__title">Contexto Industrial Web3</h3>
+                        <p class="auth-card__data">El mercado DeFi proyecta alcanzar los <strong>$770 billion
+                                USD</strong> para 2031. Actualmente, más de <strong>$77 billion USD</strong> fluyen a
+                            través de protocolos de Liquid Staking, validando la transición hacia economías
+                            programables.</p>
+                    </div>
+                    <div class="auth-card sr sr-d2">
+                        <h3 class="auth-card__title">Fórmula de ROI Tech</h3>
+                        <p class="auth-card__data">Medimos la eficiencia de la automatización on-chain bajo métricas de
+                            capital institucional:</p>
+                        <div class="formula-box">
+                            <code>ROI % = ((G - C) / C) x 100</code>
+                            <span>G = Rendimiento generado | C = Costo de Gas/Desarrollo</span>
+                        </div>
+                    </div>
+                    <div class="auth-card sr sr-d3">
+                        <h3 class="auth-card__title">Impacto de Seguridad</h3>
+                        <p class="auth-card__data">Una auditoría estandarizada previene pérdidas que, en promedio,
+                            superan los <strong>$2M USD</strong> por brecha de seguridad en contratos no verificados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO DEV -->
+        <section class="section" id="contacto-dev">
+            <div class="container">
+                <div class="section-head sr">
+                    <div class="label label--purple">Contacto Tech</div>
+                    <h2 class="section-title">Hablemos <span class="grad-text">Código.</span></h2>
+                </div>
+                <div class="contacto__grid">
+                    <div class="contacto__left sr">
+                        <p class="body-lg text-muted">¿Tienes un proyecto Web3 desafiante o necesitas una auditoría
+                            técnica? Escríbeme y analicemos la mejor infraestructura para tu idea.</p>
+                        <div class="clinks" style="margin-top:28px">
+                            <a href="https://wa.link/iqra1o" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">💬</div>
+                                <div>
+                                    <div class="clink__label mono">WhatsApp</div>
+                                    <div class="clink__val">wa.link/iqra1o →</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                            <a href="https://t.me/edwinMnzia" target="_blank" rel="noopener" class="clink glass">
+                                <div class="clink__icon">✈️</div>
+                                <div>
+                                    <div class="clink__label mono">Telegram</div>
+                                    <div class="clink__val">@edwinMnzia</div>
+                                </div>
+                                <span class="clink__arrow">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contacto__form glass sr sr-d2" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="fgroup"><label for="f-nombre" class="mono">Nombre</label><input type="text"
+                                    id="f-nombre" name="nombre" placeholder="Tu nombre" required /></div>
+                            <div class="fgroup"><label for="f-email" class="mono">Email</label><input type="email"
+                                    id="f-email" name="email" placeholder="tu@email.com" required /></div>
+                        </div>
+                        <div class="fgroup">
+                            <label for="f-servicio" class="mono">Interés</label>
+                            <select id="f-servicio" name="servicio" required>
+                                <option value="dev" selected>Desarrollo Web3</option>
+                                <option value="smart-contract">Smart Contracts</option>
+                                <option value="audit">Auditoría</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="fgroup"><label for="f-msg" class="mono">Mensaje</label><textarea id="f-msg"
+                                name="mensaje" rows="4" placeholder="Red objetivo, funcionalidades, timeline..."
+                                required></textarea></div>
+                        <button type="submit" class="btn btn--primary btn--full btn--pulse" id="f-submit">Enviar
+                            consulta
+                            →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <div class="footer__logo">EM<span class="dot">.</span></div>
+                        <p class="mono footer__tagline">"Código auditable para un mundo hiper-automatizado y
+                            descentralizado."</p>
+                    </div>
+                    <nav class="footer__nav">
+                        <a href="/index">Inicio</a>
+                        <a href="/desarrollo">Desarrollo</a>
+                        <a href="/cripto">Cripto</a>
+                        <a href="/marketing">Marketing</a>
+                        <a href="/negocios">Negocios</a>
+                        <a href="/diplomado">Diplomado</a>
+                    </nav>
+                </div>
+                <div class="footer__bottom">
+                    <span class="mono">© 2026 Edwin Muñoz Isaza. Todos los derechos reservados.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+    <script src="/services-ui.js"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="/global-enhancers.js" defer></script>
+    <script src="/ai-agent.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => { });
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            const roles = ['Blockchain Architect', 'Smart Contract Dev', 'Web3 Strategist', 'Fullstack Engineer', 'Security Researcher'];
+            if (typeof initTypewriter === 'function') initTypewriter(roles);
+        });
+    </script>
+
+</body>
+
+</html>

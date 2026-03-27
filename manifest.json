@@ -1,0 +1,42 @@
+{
+    "name": "Edwin Muñoz Isaza | Tech & Web3 Architect",
+    "short_name": "Edwin EM.",
+    "description": "Arquitecto de sistemas digitales donde tecnología y negocio convergen.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#0b0f1a",
+    "background_color": "#0b0f1a",
+    "lang": "es",
+    "categories": [
+        "portfolio",
+        "technology",
+        "business"
+    ],
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Blockchain & Dev",
+            "url": "/desarrollo",
+            "description": "Servicios de desarrollo Web3"
+        },
+        {
+            "name": "Cripto & DeFi",
+            "url": "/cripto",
+            "description": "Estrategias de inversión"
+        },
+        {
+            "name": "Contacto",
+            "url": "/index#contacto",
+            "description": "Hablar con Edwin"
+        }
+    ]
+}

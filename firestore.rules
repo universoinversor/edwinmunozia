@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    // ==============================================
+    // REGLAS PARA COLECCIÓN: "services" (Catálogo)
+    // ==============================================
+    // Públicamente: Cualquiera puede Leer los paquetes.
+    // Privadamente: Solo el Administrador (autenticado) puede Crear, Editar o Borrar paquetes.
+    match /services/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ==============================================
+    // REGLAS PARA COLECCIÓN: "orders" (Leads/Briefs)
+    // ==============================================
+    // Públicamente: Cualquiera puede Crear (enviar) un lead o brief.
+    // Privadamente: Solo el Administrador (autenticado) puede Leer o Editar/Borrar sus leads.
+    match /orders/{document=**} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+    
+    // ==============================================
+    // REGLAS PARA COLECCIÓN: "insights" (Blog CMS)
+    // ==============================================
+    // Públicamente: Cualquiera puede Leer los artículos.
+    // Privadamente: Solo el Administrador (autenticado) puede publicarlos.
+    match /insights/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ==============================================
+    // REGLAS PARA COLECCIÓN: "settings" (Config CMS)
+    // ==============================================
+    // Públicamente: Cualquiera puede Leer los settings globales (Videos y Anuncios).
+    // Privadamente: Solo el Administrador (autenticado) puede editarlos.
+    match /settings/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

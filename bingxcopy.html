@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BingX Copytrading | Edwin Muñoz Isaza — Yield Architect</title>
+    <meta name="description"
+        content="Copia mis estrategias de trading automáticamente en BingX. Rendimiento auditado y gestión de riesgo profesional." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+        .hero--bingx {
+            background: radial-gradient(circle at 70% 30%, rgba(40, 85, 246, 0.15), transparent 50%),
+                radial-gradient(circle at 20% 70%, rgba(0, 212, 255, 0.1), transparent 50%);
+        }
+
+        .hero__title {
+            font-family: var(--f-display);
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 20px auto;
+            max-width: 1000px;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            overflow-wrap: break-word;
+            text-align: center;
+        }
+
+        .bingx-frame-wrap {
+            position: relative;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
+        }
+
+        .bingx-frame-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 900px) {
+            .hero--bingx .container {
+                padding-top: 70px !important;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .hero__title {
+                font-size: 14px !important;
+                margin-bottom: 20px !important;
+                letter-spacing: -0.5px;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                line-height: 1.2;
+                max-width: 100% !important;
+            }
+
+            .hero--bingx .body-lg {
+                font-size: 0.85rem !important;
+                margin-bottom: 30px !important;
+                line-height: 1.4;
+                max-width: 100% !important;
+            }
+
+            .bingx-frame-wrap {
+                width: 100% !important;
+                margin-bottom: 40px !important;
+                padding-top: 140% !important;
+                border-radius: 12px;
+            }
+
+            .hero__metrics {
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 20px auto 0 !important;
+                padding: 0 !important;
+            }
+
+            .metric {
+                width: 100% !important;
+                max-width: 280px;
+                text-align: center !important;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                margin: 0 auto !important;
+            }
+
+            .metric:last-child {
+                border-bottom: none;
+            }
+
+            .metric__val {
+                font-size: 1.8rem !important;
+            }
+
+            .metric__label {
+                font-size: 0.7rem !important;
+                display: block;
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-indicator" style="background: var(--blue);"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader__inner">
+            <div class="loader__logo">📈<span style="color:var(--blue)">.</span></div>
+            <div class="loader__bar">
+                <div class="loader__progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader__status mono" id="loaderStatus">Conectando con BingX Engine...</div>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="/index" class="nav__logo">EM<span class="dot">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="/index" class="nav__link">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link active">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <a href="https://bingx.com/en/invite/GZ1CEV" target="_blank" class="btn btn--glow nav__cta">Copiar Ahora</a>
+        </div>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link">Inicio</a>
+        <a href="/desarrollo" class="mob-link">Desarrollo</a>
+        <a href="/cripto" class="mob-link">Cripto</a>
+        <a href="/marketing" class="mob-link">Marketing</a>
+        <a href="/negocios" class="mob-link">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="/index#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="/index#inicio" class="app-nav-item">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="/index#pilares" class="app-nav-item">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="https://bingx.com/en/invite/GZ1CEV" target="_blank" class="app-nav-item item--cta">
+            <i data-lucide="external-link"></i>
+            <span>Copiar</span>
+        </a>
+    </nav>
+
+    <div class="page-wrap">
+        <section class="hero hero--bingx">
+            <div class="container" style="padding-top: clamp(120px, 15vh, 180px); text-align: center;">
+                <div class="hero__eyebrow" style="justify-content: center;">
+                    <span class="mono" style="color:var(--blue)">📈</span>
+                    <span class="mono">Copytrading Institucional</span>
+                </div>
+                <h1 class="hero__title">
+                    ESTRATEGIAS_TEST,<br><span class="grad-text">en tu cuenta automáticamente.</span>
+                </h1>
+                <p class="body-lg text-muted max-560" style="margin: 0 auto 40px;">
+                    Conecta tu cuenta de BingX y replica mis operaciones en tiempo real con gestión de riesgo
+                    optimizada.
+                </p>
+
+                <div class="bingx-frame-wrap" style="max-width: 900px; margin: 0 auto 60px;">
+                    <!-- Placeholder or real iframe if allowed -->
+                    <div
+                        style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); padding: 20px;">
+                        <h3 class="mono" style="margin-bottom: 10px; color: var(--blue);">// BINGX_DATA_STREAM</h3>
+                        <p class="text-muted" style="margin-bottom: 20px; font-size: 0.9rem;">Ver perfil completo y
+                            rendimiento histórico en BingX.</p>
+                        <a href="https://bingx.com/en/invite/GZ1CEV" target="_blank" class="btn btn--glow btn--lg">Ver
+                            Perfil →</a>
+                    </div>
+                </div>
+
+                <div class="hero__metrics" style="justify-content: center; gap: 60px;">
+                    <div class="metric"><span class="metric__val" data-count="150">0</span><sup>%</sup><span
+                            class="metric__label">ROI Histórico</span></div>
+                    <div class="metric"><span class="metric__val" data-count="500">0</span><sup>+</sup><span
+                            class="metric__label">Copiadores</span></div>
+                    <div class="metric"><span class="metric__val" data-count="24">0</span><sup>/7</sup><span
+                            class="metric__label">Ejecución IA</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-head center">
+                    <div class="label label--cyan">Proceso</div>
+                    <h2 class="section-title">¿Cómo <span class="grad-text">funciona?</span></h2>
+                </div>
+                <div class="servicios__grid">
+                    <div class="svc-card glass">
+                        <div class="svc-card__num mono">01</div>
+                        <h3 class="svc-card__title">Crea tu cuenta</h3>
+                        <p class="svc-card__desc">Regístrate en BingX usando el link oficial para acceder a los
+                            beneficios VIP.</p>
+                    </div>
+                    <div class="svc-card glass">
+                        <div class="svc-card__num mono">02</div>
+                        <h3 class="svc-card__title">Deposita fondos</h3>
+                        <h3 class="svc-card__title">Fondea tu cuenta</h3>
+                        <p class="svc-card__desc">Transfiere USDT a tu billetera de futuros para empezar a copiar.</p>
+                    </div>
+                    <div class="svc-card glass">
+                        <div class="svc-card__num mono">03</div>
+                        <h3 class="svc-card__title">Activa el Copy</h3>
+                        <p class="svc-card__desc">Busca mi perfil "Edwin_Architect" y dale a copiar. ¡Listo!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <div class="footer__logo">EM<span class="dot">.</span></div>
+                        <p class="mono footer__tagline">Yield Architect & Web3 Specialist.</p>
+                    </div>
+                    <nav class="footer__nav">
+                        <a href="/index">Inicio</a>
+                        <a href="/desarrollo">Desarrollo</a>
+                        <a href="/cripto">Cripto</a>
+                    </nav>
+                </div>
+                <div class="footer__bottom">
+                    <span class="mono">© 2026 Edwin Muñoz Isaza.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/script.js"></script>
+    <script>
+        initTypewriter(['Rendimiento Auditado', 'Gestión de Riesgo', 'Trading Algorítmico', 'Libertad Financiera']);
+    </script>
+</body>
+
+</html>

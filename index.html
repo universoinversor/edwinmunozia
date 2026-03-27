@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edwin Muñoz Isaza | Arquitecto de muchos sistemas</title>
+    <meta name="description"
+        content="Edwin Muñoz Isaza — Tech & Web3 Architect, AI Strategist y Blockchain Developer. Convierto ideas en activos digitales rentables." />
+    <link rel="canonical" href="https://edwinmunozisaza.com/" />
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edwinmunozisaza.com/" />
+    <meta property="og:title" content="Edwin Muñoz Isaza | Tech & Web3 Architect" />
+    <meta property="og:description"
+        content="Convierto ideas en activos digitales rentables. Web3, IA, DeFi y Marketing de Performance." />
+    <meta property="og:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <meta property="og:locale" content="es_CO" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Edwin Muñoz Isaza | Tech & Web3 Architect" />
+    <meta name="twitter:description"
+        content="Convierto ideas en activos digitales rentables. Web3, IA, DeFi y Marketing." />
+    <meta name="twitter:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Edwin Muñoz Isaza",
+      "jobTitle": "Tech & Web3 Architect",
+      "url": "https://edwinmunozisaza.com",
+      "sameAs": ["https://wa.me/573183002448"],
+      "description": "Arquitecto de sistemas digitales donde tecnología y negocio convergen."
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="theme-color" content="#0b0f1a" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Edwin Muñoz Isaza",
+      "jobTitle": "Tech & Web3 Architect",
+      "url": "https://edwinmunozisaza.com",
+      "image": "https://edwinmunozisaza.com/assets/img/edwin-tech-main.png",
+      "sameAs": [
+        "https://www.instagram.com/edwinmunozisaza/",
+        "https://t.me/edwinMnzia"
+      ],
+      "knowsAbout": ["Web3", "Smart Contracts", "Growth Marketing", "AI Automation", "E-commerce"],
+      "alumniOf": "Escuela de Inversiones Cripto",
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consultoría Tech & Web3"
+        }
+      }
+    }
+    </script>
+</head>
+
+
+<body data-theme="home">
+
+    <div class="page-indicator page-indicator--home"></div>
+    <div class="ambient-light" id="ambientLight"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+    <div class="scroll-progress"></div>
+
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">E<span>M</span></div>
+            <div class="loader-bar">
+                <div class="loader-progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader-status" id="loaderStatus">Inicializando...</div>
+        </div>
+    </div>
+
+    <!-- WEB3 BADGE -->
+    <div class="web3-verified-badge">
+        <i data-lucide="shield-check"></i>
+        <span>IDENTITY_VERIFIED_ON_CHAIN</span>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo">EM<span class="dot">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="index.html" class="nav__link active">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <div class="nav__tools" style="display:flex; align-items:center; gap:12px;">
+                <div class="lang-switcher" style="display:flex; background:rgba(255,255,255,0.05); border:1px solid var(--b-1); border-radius:8px; padding:3px; backdrop-filter:blur(5px);">
+                    <button class="lang-btn active" data-lang="es" style="background:transparent; color:var(--t-1); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">ES</button>
+                    <button class="lang-btn" data-lang="en" style="background:transparent; color:var(--t-2); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">EN</button>
+                </div>
+                <button class="btn btn--outline web3-connect-btn" style="padding:0 14px; font-size:0.8rem; height:34px; display:flex; align-items:center; gap:6px;"><i data-lucide="wallet" style="width:14px; height:14px;"></i> Connect</button>
+                <a href="#contacto" class="btn btn--glow nav__cta" style="height:34px; padding:0 20px; line-height:34px; font-size:0.85rem;">Consultar</a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <style>
+            .lang-btn.active { background: var(--pink); color: #fff !important; }
+            .nav__cta { display: none; }
+            @media (min-width: 900px) {
+                .nav__cta { display: inline-flex; }
+                .nav__tools { gap: 20px; }
+            }
+            @media (max-width: 900px) {
+                .nav__tools { margin-right: 40px; }
+            }
+        </style>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link active">Inicio</a>
+        <a href="/desarrollo" class="mob-link">Desarrollo</a>
+        <a href="/cripto" class="mob-link">Cripto</a>
+        <a href="/marketing" class="mob-link">Marketing</a>
+        <a href="/negocios" class="mob-link">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="#inicio" class="app-nav-item active">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="#pilares" class="app-nav-item">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="#contacto" class="app-nav-item item--cta">
+            <i data-lucide="message-square"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+    <div class="page-wrap">
+
+        <!-- ══ HERO ══ -->
+        <section class="hero" id="inicio">
+            <div class="hero__bg hero--home">
+                <div class="grid" aria-hidden="true"></div>
+            </div>
+            <div class="container hero__content">
+                <div class="hero__eyebrow">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span class="mono">Disponible para proyectos &bull; 2026</span>
+                </div>
+                <h1 class="hero__name" style="font-size: clamp(2.5rem, 12vw, 8.5rem); line-height: 0.9;">
+                    <span class="hero__name-line">Edwin</span>
+                    <span class="hero__name-line grad-text">Muñoz Isaza</span>
+                </h1>
+                <div class="hero__roles">
+                    <span class="mono" style="color:var(--accent)">// </span>
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor-blink" style="color:var(--accent)">|</span>
+                </div>
+                <p class="hero__lema">Arquitecto de sistemas digitales donde la <em
+                        style="color:var(--accent); font-style:normal; font-weight:700">tecnología</em> y el <em
+                        style="color:var(--accent); font-style:normal; font-weight:700">negocio</em> convergen en
+                    resultados exponenciales.</p>
+                <div class="hero__ctas">
+                    <span class="magnetic-wrap"><a href="#sobre-mi"
+                            class="btn btn--primary btn--lg btn--pulse magnetic" aria-label="Conocer la trayectoria de Edwin Muñoz">Mi
+                            Trayectoria <span class="arrow" aria-hidden="true">↗</span></a></span>
+                    <span class="magnetic-wrap"><a href="#contacto"
+                            class="btn btn--outline btn--pulse-alt magnetic" aria-label="Agendar una consultoría con Edwin">Agendar
+                            Consultoría</a></span>
+                </div>
+
+                <div class="hero__metrics">
+                    <div class="metric glass"
+                        style="padding: 10px 20px; border-radius: 12px; border: 1px solid var(--b-1)">
+                        <span class="metric__val" data-count="50" style="color:var(--accent)">0</span><sup>+</sup>
+                        <span class="metric__label">Proyectos</span>
+                    </div>
+                    <div class="metric__sep"></div>
+                    <div class="metric glass"
+                        style="padding: 10px 20px; border-radius: 12px; border: 1px solid var(--b-1)">
+                        <span class="metric__val" data-count="12" style="color:var(--accent)">0</span><sup>+</sup>
+                        <span class="metric__label">Años Exp.</span>
+                    </div>
+                    <div class="metric__sep"></div>
+                    <div class="metric glass"
+                        style="padding: 10px 20px; border-radius: 12px; border: 1px solid var(--b-1)">
+                        <span class="metric__val" data-count="100" style="color:var(--accent)">0</span><sup>%</sup>
+                        <span class="metric__label">Escalable</span>
+                    </div>
+                </div>
+
+                <!-- TERMINAL WIDGET -->
+                <div class="terminal-window" id="heroTerminal" aria-hidden="true">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="mono"
+                            style="margin-left:auto; font-size:0.7rem; color: rgba(255,255,255,0.3)">EM_OS v3.0</span>
+                    </div>
+                    <div class="terminal-body" id="terminalOutput"></div>
+                </div>
+
+                <div class="hero__visual sr sr-d3 visible">
+                    <div class="hologram-frame">
+                        <img src="/assets/img/edwin-tech-main.png" alt="Edwin Muñoz - Tech & Web3 Architect" class="hologram-img" loading="eager">
+                        <div class="hologram-glitch"></div>
+                        <div class="hologram-scanline"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__float-badges" aria-hidden="true">
+                <div class="float-badge float-badge--tl"><span class="mono">Solidity</span><span class="fb-dot"></span>
+                </div>
+                <div class="float-badge float-badge--tr"><span class="mono">DeFi</span><span
+                        class="fb-dot fb-dot--cyan"></span></div>
+                <div class="float-badge float-badge--br"><span class="mono">Web3 AI</span><span
+                        class="fb-dot fb-dot--purple"></span></div>
+            </div>
+            <div class="hero__scroll" aria-hidden="true">
+                <div class="scroll-cue">
+                    <div class="scroll-line"></div>
+                    <span class="mono scroll-label">scroll</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ MARQUEE ══ -->
+        <div class="partners-marquee" aria-hidden="true">
+            <div class="partners-track">
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=024" alt="Ethereum" class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta"
+                    class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/OpenAI_Logo.svg" alt="OpenAI"
+                    class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify"
+                    class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Binance_logo.svg" alt="Binance"
+                    class="partner-logo" loading="lazy">
+
+                <!-- Duplicate for infinite scroll -->
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=024" alt="Ethereum" class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta"
+                    class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/OpenAI_Logo.svg" alt="OpenAI"
+                    class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify"
+                    class="partner-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Binance_logo.svg" alt="Binance"
+                    class="partner-logo" loading="lazy">
+            </div>
+        </div>
+
+
+        <!-- ══ SOBRE MÍ ══ -->
+        <section class="section" id="sobre-mi">
+            <div class="container">
+                <div class="sobre-mi__grid">
+
+                    <div class="sobre-mi__visual sr">
+                        <div class="wwm-image-wrap"
+                            style="transform: rotate(-2deg); box-shadow: 0 40px 80px rgba(40,85,246,0.3); border: 1px solid var(--b-2); border-radius: 20px; overflow: hidden; position: relative;">
+                            <img src="/assets/img/edwin-tech-main.png" alt="Edwin Muñoz - Tech & Web3 Architect Portrait"
+                                class="wwm-photo" loading="lazy">
+                            <div class="wwm-photo-overlay"
+                                style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); pointer-events: none;">
+                            </div>
+                            <div class="wwm-photo-scan"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--accent); opacity: 0.3; animation: scanLine 4s infinite linear;">
+                            </div>
+                            <div class="wwm-image-status"
+                                style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); color: var(--green); padding: 6px 12px; border-radius: 4px; font-family: var(--f-mono); font-size: 0.65rem; border-left: 3px solid var(--green); z-index: 10;">
+                                // STATUS: ARCHITECTING
+                            </div>
+                        </div>
+
+                        <div class="terminal-card glass" style="margin-top: -30px; position: relative; z-index: 2;">
+                            <div class="terminal-top">
+                                <span class="t-dot t-dot--r"></span><span class="t-dot t-dot--y"></span><span
+                                    class="t-dot t-dot--g"></span>
+                                <span class="mono t-title">edwin@portfolio:~</span>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="t-line"><span class="t-prompt">$</span>&nbsp;whoami</div>
+                                <div class="t-line t-out">Edwin Muñoz Isaza — Medellín, Colombia 🇨🇴</div>
+                                <div class="t-line"><span class="t-prompt">$</span>&nbsp;cat bio.txt</div>
+                                <div class="t-line t-out" style="color:var(--t-2)">+12 años transformando ideas en
+                                    sistemas</div>
+                                <div class="t-line t-out" style="color:var(--t-2)">Blockchain · IA · Negocios Digitales
+                                </div>
+                                <div class="t-line"><span class="t-prompt">$</span>&nbsp;status --live</div>
+                                <div class="t-line t-out t-green">🟢 Disponible para proyectos 2026</div>
+                                <div class="t-cursor">▊</div>
+                            </div>
+                        </div>
+                        <div class="stat-pill stat-pill--1"><span class="mono">Proyectos</span><strong>50+</strong>
+                        </div>
+                        <div class="stat-pill stat-pill--2"><span class="mono">Contratos</span><strong>25+</strong>
+                        </div>
+                    </div>
+
+                    <div class="sobre-mi__copy sr sr-d2">
+                        <div class="label label--cyan">Sobre mí</div>
+                        <h2 class="section-title">
+                            Edwin Muñoz,<br>
+                            <span class="grad-text">Arquitecto de Sistemas de Valor</span>
+                        </h2>
+                        <p class="body-lg">
+                            Nacido en las montañas de Antioquia (1996) y residente en Medellín, soy un emprendedor
+                            digital enfocado en la intersección entre ingeniería Web3,
+                            inteligencia artificial y modelos de negocio escalables. Impulsor de <strong>Ecosistemas
+                                Digitales</strong> y arquitecto del ecosistema
+                            <strong>CEGlobalEarn</strong>.
+                        </p>
+                        <p class="body-md text-muted" style="margin-top:24px">
+                            Mi enfoque no es solo técnico; es estratégico. Construyo infraestructuras que no solo
+                            funcionan, sino que <span class="text-accent">facturan y escalan</span> de forma predecible.
+                            He gestionado presupuestos de pauta de seis cifras y desplegado contratos inteligentes que
+                            protegen el capital de comunidades enteras.
+                        </p>
+                        <p class="body-md text-muted" style="margin-top:12px">
+                            Creo en construir sobre fundamentos sólidos. Desde el desarrollo de sistemas de <strong>Copy
+                                Trading</strong> hasta la <strong>Tokenización de Activos Reales (RWA)</strong>, cada
+                            proyecto tiene un objetivo no negociable: <span class="text-cyan">generar ingresos reales y
+                                automatizados.</span>
+                        </p>
+
+                        <div class="chip-grid">
+                            <span class="chip">Solidity</span>
+                            <span class="chip">Smart Contracts</span>
+                            <span class="chip">DeFi / Web3</span>
+                            <span class="chip">Marketing IA</span>
+                            <span class="chip">Fotografía + Diseño</span>
+                            <span class="chip">Shopify</span>
+                            <span class="chip">Bots automatizados</span>
+                            <span class="chip">Tokenización RWA</span>
+                            <span class="chip">Rust / EVM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ══ PROPÓSITO & MOTIVACIÓN ══ -->
+        <section class="section" id="proposito">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--purple">Mi Propósito</div>
+                    <h2 class="section-title">Lo que me <span class="grad-text--purple">mueve</span></h2>
+                    <p class="body-md text-muted max-560">Más de una década de evolución constante.</p>
+                </div>
+                <div class="tech-core-wrap sr">
+                    <div class="core-pulsar">
+                        <div class="pulsar-inner"></div>
+                        <div class="pulsar-ring"></div>
+                        <div class="pulsar-ring"></div>
+                    </div>
+
+                    <div class="pillar pillar--left">
+                        <div class="pillar__icon"><i data-lucide="target"></i></div>
+                        <h3>MISIÓN</h3>
+                        <p>Democratizar el acceso a tecnologías de alto impacto (Web3 + IA) para escalar el potencial
+                            humano.</p>
+                    </div>
+
+                    <div class="pillar pillar--right">
+                        <div class="pillar__icon"><i data-lucide="rocket"></i></div>
+                        <h3>VISIÓN</h3>
+                        <p>Ser el arquitecto líder en la convergencia de economías descentralizadas y automatización
+                            inteligente.</p>
+                    </div>
+
+                    <div class="pillar pillar--bottom">
+                        <div class="pillar__icon"><i data-lucide="settings"></i></div>
+                        <h3>VALORES</h3>
+                        <p>Código auditable, estrategias medibles y sistemas que generan resultados reales y
+                            automatizados.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ TRAYECTORIA GALÁCTICA ══ -->
+        <section class="section" id="trayectoria">
+            <div class="container">
+                <div class="section-head center sr">
+                    <div class="label label--cyan">Evolución</div>
+                    <h2 class="section-title">+12 Años <span class="grad-text">Digitales</span></h2>
+                    <p class="body-md text-muted max-560">Una década de transformación tecnológica constante.</p>
+                </div>
+
+                <div class="galactic-timeline sr">
+                    <div class="gt-line"></div>
+
+                    <div class="gt-node" data-year="2014">
+                        <div class="gt-node__dot"></div>
+                        <div class="gt-node__content glass">
+                            <span class="mono gt-date">2014 - 2017</span>
+                            <h3>Fundamentos Tech</h3>
+                            <p>Desarrollo web y sistemas distribuidos. Masterizando arquitectura de software robusto.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="gt-node gt-node--alt" data-year="2018">
+                        <div class="gt-node__dot"></div>
+                        <div class="gt-node__content glass">
+                            <span class="mono gt-date">2018 - 2020</span>
+                            <h3>E-commerce & Ads</h3>
+                            <p>Desarrollo de infraestructuras para ventas masivas. Implementación de funnels de alta
+                                conversión y <strong>growth strategies</strong> escalables.</p>
+                        </div>
+                    </div>
+
+                    <div class="gt-node" data-year="2021">
+                        <div class="gt-node__dot"></div>
+                        <div class="gt-node__content glass">
+                            <span class="mono gt-date">2021 - 2023</span>
+                            <h3>Web3 Architect</h3>
+                            <p>Ingeniería de protocolos descentralizados. Desarrollo de <strong>Smart Contracts</strong>
+                                en Solidity y Rust bajo estándares institucionales.</p>
+                        </div>
+                    </div>
+
+                    <div class="gt-node" data-year="2024">
+                        <div class="gt-node__dot"></div>
+                        <div class="gt-node__content glass">
+                            <span class="mono gt-date">2024 - 2025</span>
+                            <h3>AI & Autonomous Systems</h3>
+                            <p>Ingeniería de <strong>Agentes IA</strong> y algoritmos de trading de alta frecuencia para
+                                mercados globales.</p>
+                        </div>
+                    </div>
+
+                    <div class="gt-node gt-node--alt gt-node--current" data-year="2026">
+                        <div class="gt-node__dot"></div>
+                        <div class="gt-node__content glass">
+                            <span class="mono gt-date">2026 - ✨</span>
+                            <h3>Elite Tech Architecture</h3>
+                            <p>Escala masiva de sistemas autónomos y consultoría estratégica en la convergencia de
+                                <strong>Web3 & Real Economy</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- (Old timeline removed) -->
+    </div>
+    </section>
+
+    <!-- SOCIAL PROOF SECTION -->
+    <section class="proof-section" id="social-proof">
+        <div class="container">
+            <div class="section-head center sr">
+                <div class="label label--cyan">Resultados Reales</div>
+                <h2 class="section-title">Impacto en <span class="grad-text">Números</span></h2>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-card glass sr sr-d1">
+                    <span class="result-card__val">+120%</span>
+                    <span class="result-card__label">ROI Promedio Ads</span>
+                </div>
+                <div class="result-card glass sr sr-d2">
+                    <span class="result-card__val">$1.2M</span>
+                    <span class="result-card__label">TVL Gestionado</span>
+                </div>
+                <div class="result-card glass sr sr-d3">
+                    <span class="result-card__val">50+</span>
+                    <span class="result-card__label">Sistemas Desplegados</span>
+                </div>
+            </div>
+
+            <!-- 3D GLOBE CONTAINER -->
+            <div id="globeContainer"
+                style="width: 100%; height: 600px; position: relative; margin-top: 80px; cursor: grab;">
+                <div class="hud-box hud--mini" style="position: absolute; top: 20px; left: 20px; z-index: 5;">
+                    <div class="hud-label">📡 GLOBAL INFRASTRUCTURE</div>
+                    <div class="hud-val">ACTIVE NODES: 12</div>
+                </div>
+            </div>
+
+            <!-- LIVE DASHBOARD (Phase 2) -->
+            <div class="dashboard-preview sr">
+                <div class="dash-grid">
+                    <div class="dash-item">
+                        <div class="dash-label">NETWORK_LATENCY</div>
+                        <div class="dash-val" id="latVal">24ms</div>
+                        <div class="dash-bar">
+                            <div class="dash-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="dash-item">
+                        <div class="dash-label">AI_THINKING_CAPACITY</div>
+                        <div class="dash-val" id="aiVal">98.2%</div>
+                        <div class="dash-bar">
+                            <div class="dash-progress" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div class="dash-item">
+                        <div class="dash-label">DEFI_LIQUIDITY_INDEX</div>
+                        <div class="dash-val" id="liqVal">OPTIMAL</div>
+                        <div class="dash-bar">
+                            <div class="dash-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-head center sr" style="margin-top: 120px;" id="proyectos">
+                <div class="label label--gold">Portafolio</div>
+                <h2 class="section-title">Soluciones de <span class="grad-text--gold">Alto Impacto</span></h2>
+            </div>
+            
+            <div class="works-grid" data-category="all" style="margin-bottom: 80px;"></div>
+
+            <div class="testimonials-grid">
+                <div class="test-card glass sr sr-d1">
+                    <p class="test-card__quote">La arquitectura que Edwin diseñó para nuestro ecosistema Web3 no solo es
+                        segura, sino que la UX es de otro nivel. Un profesional excepcional.</p>
+                    <div class="test-card__author">
+                        <div class="test-card__info">
+                            <h4>Carlos R.</h4>
+                            <span class="mono">Arquitecto de muchos sistemas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card glass sr sr-d2">
+                    <p class="test-card__quote">La escalabilidad y visión técnica que Edwin aporta es disruptiva. Logró
+                        automatizar procesos complejos en tiempo récord, permitiéndonos operar con eficiencia global.
+                    </p>
+                    <div class="test-card__author">
+                        <div class="test-card__info">
+                            <h4>Javier M.</h4>
+                            <span>Managing Director, TechScale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ VALORES ══ -->
+    <section class="section" id="valores">
+        <div class="container">
+            <div class="section-head center sr">
+                <div class="label label--blue">Filosofía</div>
+                <h2 class="section-title">Lo que me <span class="grad-text">define</span></h2>
+            </div>
+            <div class="valores__grid">
+                <div class="valor-card sr sr-d1">
+                    <div class="valor-card__icon"><i data-lucide="target"></i></div>
+                    <h3 class="valor-card__title">Resultados, no excusas</h3>
+                    <p class="valor-card__desc">Mido todo en métricas reales. TVL, ROAS, tasa de conversión,
+                        contratos en producción. Lo que no se puede medir, no se puede mejorar.</p>
+                </div>
+                <div class="valor-card sr sr-d2">
+                    <div class="valor-card__icon"><i data-lucide="link"></i></div>
+                    <h3 class="valor-card__title">Sistemas sobre esfuerzo</h3>
+                    <p class="valor-card__desc">Construyo sistemas que escalan solos. Un bot que vende 24/7, un
+                        contrato que distribuye rentas automáticamente, un funnel que convierte mientras duermo.</p>
+                </div>
+                <div class="valor-card sr sr-d3">
+                    <div class="valor-card__icon"><i data-lucide="zap"></i></div>
+                    <h3 class="valor-card__title">Tecnología de frontera</h3>
+                    <p class="valor-card__desc">Siempre en la vanguardia. Blockchain, IA generativa, DeFi v3. No
+                        sigo tendencias, me posiciono antes de que sean mainstream.</p>
+                </div>
+                <div class="valor-card sr sr-d4">
+                    <div class="valor-card__icon"><i data-lucide="globe"></i></div>
+                    <h3 class="valor-card__title">Visión global, raíces locales</h3>
+                    <p class="valor-card__desc">Desde Medellín para el mundo. Los mejores proyectos nacen cuando
+                        combinas la creatividad latinoamericana con la tecnología más avanzada del planeta.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- GLOBAL TRUST DASHBOARD -->
+    <section class="section" id="authority-global">
+        <div class="container">
+            <div class="section-head center sr">
+                <div class="label label--cyan">Autoridad Global</div>
+                <h2 class="section-title">Resultados de <span class="grad-text">Impacto Real</span></h2>
+                <p class="section-desc">Métricas agregadas a través de todas nuestras verticales operativas en los
+                    últimos 24 meses.</p>
+            </div>
+            <div class="auth-grid">
+                <div class="auth-card sr sr-d1">
+                    <div class="svc-card__icon"><i data-lucide="trending-up"></i></div>
+                    <h3 class="auth-card__title">ROI Agregado</h3>
+                    <p class="auth-card__data">Hemos mantenido un <strong>ROAS promedio de 4.2x</strong> en campañas de
+                        pauta digital, gestionando presupuestos que superan los <strong>$250k USD</strong> con
+                        eficiencia institucional.</p>
+                </div>
+                <div class="auth-card sr sr-d2">
+                    <div class="svc-card__icon"><i data-lucide="shield-check"></i></div>
+                    <h3 class="auth-card__title">Seguridad On-Chain</h3>
+                    <p class="auth-card__data">Más de <strong>45 Smart Contracts</strong> desplegados en redes
+                        principales (ETH, Polygon, BSC) con <strong>0 incidentes</strong> de seguridad y una
+                        optimización de gas superior al 30%.</p>
+                </div>
+                <div class="auth-card sr sr-d3">
+                    <div class="svc-card__icon"><i data-lucide="users"></i></div>
+                    <h3 class="auth-card__title">Ecosistemas Web3</h3>
+                    <p class="auth-card__data">Arquitectamos plataformas que han servido a más de <strong>15,000
+                            usuarios activos</strong>, integrando sistemas de educación, inversión y gobernanza
+                        descentralizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ TRES PILARES ══ -->
+    <section class="section" id="pilares"
+        style="background: radial-gradient(ellipse at 50% 0%, rgba(40,85,246,0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="section-head center sr">
+                <div class="label label--blue">Lo que hago</div>
+                <h2 class="section-title">Tres pilares.<br><span class="grad-text">Un sistema.</span></h2>
+                <p class="body-md text-muted max-560">Cada pilar es un motor de ingresos autónomo y escalable.</p>
+            </div>
+            <div class="servicios__grid">
+                <a href="desarrollo.html" class="svc-card sr sr-d1" data-theme="dev"
+                    style="cursor:pointer; text-decoration:none; display:flex; flex-direction:column; --accent:var(--purple); --accent-g:var(--g-purple); --accent-shadow:rgba(124,58,237,0.3)">
+                    <div class="svc-card__num mono">01</div>
+                    <div class="svc-card__icon"><i data-lucide="webhook"></i></div>
+                    <h3 class="svc-card__title">Blockchain & Dev</h3>
+                    <p class="svc-card__desc">Arquitectura Web3, Smart Contracts auditables y tokenización de
+                        activos reales (RWA).</p>
+                    <span class="svc-link" style="margin-top:auto">Explorar Ingeniería →</span>
+                    <div class="svc-card__gline" style="background:var(--accent-g)"></div>
+                </a>
+                <a href="cripto.html" class="svc-card svc-card--featured sr sr-d2" data-theme="cripto"
+                    style="cursor:pointer; text-decoration:none; display:flex; flex-direction:column; --accent:var(--cyan); --accent-g:var(--g-main); --accent-shadow:rgba(0,212,255,0.3)">
+                    <div class="svc-card__badge">MASTER</div>
+                    <div class="svc-card__num mono">02</div>
+                    <div class="svc-card__icon"><i data-lucide="bar-chart-3"></i></div>
+                    <h3 class="svc-card__title">Cripto & DeFi</h3>
+                    <p class="svc-card__desc">Estrategias de inversión auditadas, Copytrading institucional y
+                        gestión de riesgo con IA.</p>
+                    <span class="svc-link" style="margin-top:auto">Ver Estrategias →</span>
+                </a>
+                <a href="negocios.html" class="svc-card sr sr-d3" data-theme="negocios"
+                    style="cursor:pointer; text-decoration:none; display:flex; flex-direction:column; --accent:var(--green); --accent-g:var(--g-green); --accent-shadow:rgba(0,255,135,0.3)">
+                    <div class="svc-card__num mono">03</div>
+                    <div class="svc-card__icon"><i data-lucide="briefcase"></i></div>
+                    <h3 class="svc-card__title">Scale & IA</h3>
+                    <p class="svc-card__desc">Marketing de alta conversión, automatización de ventas y escala de
+                        negocios digitales.</p>
+                    <span class="svc-link" style="margin-top:auto">Consultar Escala →</span>
+                    <div class="svc-card__gline" style="background:var(--accent-g)"></div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="cta-band">
+        <div class="cta-band__bg">
+            <div class="cta-orb cta-orb--1"></div>
+            <div class="cta-orb cta-orb--2"></div>
+        </div>
+        <div class="container">
+            <div class="cta-band__content sr">
+                <h2 class="cta-band__title">¿Listo para convertir tu idea<br>en <span class="grad-text">ingresos
+                        reales?</span></h2>
+                <p class="body-md text-muted cta-band__sub">Sin rodeos. Solo ejecución técnica de alto nivel.</p>
+                <a href="#contacto" class="btn btn--glow btn--lg">Comenzar ahora →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-head center sr">
+                <div class="label label--cyan">Preguntas Frecuentes</div>
+                <h2 class="section-title">Resolviendo <span class="grad-text">Dudas</span></h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item glass sr sr-d1">
+                    <button class="faq-trigger">¿Cómo garantizas la seguridad en Web3? <span
+                            class="plus">+</span></button>
+                    <div class="faq-content">
+                        <p>Utilizo estándares de auditoría institucional y pruebas de estrés en entornos locales
+                            (Hardhat/Foundry) antes de cualquier despliegue en Mainnet. La seguridad no es una opción,
+                            es la base de todo mi código.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass sr sr-d2">
+                    <button class="faq-trigger">¿Qué retorno puedo esperar de las campañas de marketing? <span
+                            class="plus">+</span></button>
+                    <div class="faq-content">
+                        <p>Aunque el mercado varía, mi enfoque está en superar el ROAS promedio de la industria mediante
+                            optimización de datos. Buscamos relaciones LTV/CAC superiores a 3:1 para asegurar
+                            rentabilidad a largo plazo.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass sr sr-d3">
+                    <button class="faq-trigger">¿Trabajas con clientes internacionales? <span
+                            class="plus">+</span></button>
+                    <div class="faq-content">
+                        <p>Sí, opero de forma global con clientes en EEUU, Europa y LATAM. Mi infraestructura
+                            descentralizada permite colaboración fluida sin importar la zona horaria.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CONTACTO ══ -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="section-head sr">
+                <div class="label label--cyan">Contacto</div>
+                <h2 class="section-title">Hablemos <span class="grad-text">directo.</span></h2>
+            </div>
+            <div class="contacto__grid">
+                <div class="contacto__left sr">
+                    <p class="body-lg text-muted">Trabajo con proyectos serios que buscan resultados. Si tienes un
+                        reto técnico o quieres escalar tu negocio digital, escríbeme.</p>
+                    <div class="clinks">
+                        <a href="https://wa.link/iqra1o" target="_blank" rel="noopener" class="clink glass">
+                            <div class="clink__icon">💬</div>
+                            <div>
+                                <div class="clink__label mono">WhatsApp</div>
+                                <div class="clink__val">wa.link/iqra1o →</div>
+                            </div>
+                            <span class="clink__arrow">↗</span>
+                        </a>
+                        <a href="https://t.me/edwinMnzia" target="_blank" rel="noopener" class="clink glass">
+                            <div class="clink__icon">✈️</div>
+                            <div>
+                                <div class="clink__label mono">Telegram</div>
+                                <div class="clink__val">@edwinMnzia</div>
+                            </div>
+                            <span class="clink__arrow">↗</span>
+                        </a>
+                        <a href="https://www.instagram.com/edwinmunozisaza/" target="_blank" rel="noopener"
+                            class="clink glass">
+                            <div class="clink__icon">📸</div>
+                            <div>
+                                <div class="clink__label mono">Instagram</div>
+                                <div class="clink__val">@edwinmunozisaza</div>
+                            </div>
+                            <span class="clink__arrow">↗</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@edwinmunozia" target="_blank" rel="noopener"
+                            class="clink glass">
+                            <div class="clink__icon">🎬</div>
+                            <div>
+                                <div class="clink__label mono">TikTok</div>
+                                <div class="clink__val">@edwinmunozia</div>
+                            </div>
+                            <span class="clink__arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
+                <form class="contacto__form glass sr sr-d2" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="fgroup"><label for="f-nombre" class="mono">Nombre</label><input type="text"
+                                id="f-nombre" name="nombre" placeholder="Tu nombre" required /></div>
+                        <div class="fgroup"><label for="f-email" class="mono">Email</label><input type="email"
+                                id="f-email" name="email" placeholder="tu@email.com" required /></div>
+                    </div>
+                    <div class="fgroup">
+                        <label for="f-servicio" class="mono">Servicio de
+                            interés</label>
+                        <select id="f-servicio" name="servicio" required>
+                            <option value="" disabled selected>Seleccionar...
+                            </option>
+                            <option value="marketing">Negocios &amp; Marketing IA
+                            </option>
+                            <option value="cripto">Cripto &amp; DeFi</option>
+                            <option value="dev">Dev Factory — Blockchain</option>
+                            <option value="otro">Consultoría general</option>
+                        </select>
+                    </div>
+                    <div class="fgroup"><label for="f-msg" class="mono">Mensaje</label><textarea id="f-msg"
+                            name="mensaje" rows="4" placeholder="Cuéntame tu proyecto..." required></textarea></div>
+                    <button type="submit" class="btn btn--glow btn--full" id="f-submit">Enviar mensaje →</button>
+                    <div class="form-ok" id="formOk" role="status">✅ Mensaje recibido. Te
+                        respondo en &lt;24h.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">EM<span class="dot">.</span></div>
+                    <p class="mono footer__tagline">Arquitectando el futuro de la economía digital a través de
+                        código auditable y estrategias de crecimiento exponencial.</p>
+                </div>
+                <nav class="footer__nav">
+                    <div class="nav-links">
+                        <a href="/index" class="active">Inicio</a>
+                        <a href="/desarrollo">Web3</a>
+                        <a href="/cripto">Cripto</a>
+                        <a href="/marketing">Marketing</a>
+                        <a href="/negocios">Negocios</a>
+                        <a href="/diplomado">IA</a>
+                        <button id="soundToggle" class="nav-icon-btn" title="Activar Sonido">
+                            <i data-lucide="volume-x"></i>
+                        </button>
+                    </div>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+            </div>
+            <div class="footer__bottom">
+                <span class="mono">© 2026 Edwin Muñoz Isaza. Todos los derechos
+                    reservados.</span>
+                <span class="footer__status"><span class="status-dot status-dot--sm"></span><span class="mono">Open
+                        to work</span></span>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+        <!-- EXTERNAL LIBRARIES -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="/global-enhancers.js" defer></script>
+    <script src="/ai-agent.js" defer></script>
+    <script src="/script.js" defer></script>
+        <script>
+            // PWA Service Worker Registration
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js').catch(() => { });
+                });
+            }
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.lucide) lucide.createIcons();
+                const roles = ['Tech & Web3 Architect', 'AI Strategist', 'Blockchain Developer', 'Smart Contract Dev', 'Marketing de Conversión'];
+                if (typeof initTypewriter === 'function') initTypewriter(roles);
+            });
+        </script>
+</body>
+
+</html>

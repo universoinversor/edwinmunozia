@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketing de Conversión | Edwin Muñoz Isaza — Tech & Web3 Architect</title>
+    <meta name="description" content="Estrategias de pauta, contenido y crecimiento digital por Edwin Muñoz Isaza." />
+    <link rel="canonical" href="https://edwinmunozisaza.com/marketing.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edwinmunozisaza.com/marketing.html" />
+    <meta property="og:title" content="Marketing de Conversión | Edwin Muñoz Isaza" />
+    <meta property="og:description"
+        content="Meta Ads, Tik Tok Ads, Email y Marketing de Performance que genera ROI real." />
+    <meta property="og:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Marketing Digital | Edwin Muñoz Isaza" />
+    <meta name="twitter:description" content="Meta Ads, Tik Tok Ads y Marketing de Performance." />
+    <meta name="twitter:image" content="https://edwinmunozisaza.com/assets/img/edwin-tech-main.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="theme-color" content="#0b0f1a" />
+</head>
+
+
+<body data-theme="marketing">
+
+    <div class="page-indicator"></div>
+    <div class="ambient-light" id="ambientLight"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <div class="loader" id="loader">
+        <div class="loader__inner">
+            <div class="loader__logo">EM<span style="color:var(--pink)">.</span></div>
+            <div class="loader__bar">
+                <div class="loader__progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader__status mono" id="loaderStatus">Optimizando campañas...</div>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav">
+        <div class="nav__wrap">
+            <a href="/index" class="nav__logo" aria-label="Volver al inicio">EM<span class="dot" aria-hidden="true">.</span></a>
+            <ul class="nav__menu">
+                <li><a href="/index" class="nav__link">Inicio</a></li>
+                <li><a href="/desarrollo" class="nav__link">Desarrollo</a></li>
+                <li><a href="/cripto" class="nav__link">Cripto</a></li>
+                <li><a href="/marketing" class="nav__link">Marketing</a></li>
+                <li><a href="/negocios" class="nav__link">Negocios</a></li>
+                <li><a href="/diplomado" class="nav__link">Diplomado</a></li>
+                <li><a href="/marketplace" class="nav__link">Marketplace</a></li>
+            </ul>
+            <div class="nav__tools" style="display:flex; align-items:center; gap:12px;">
+                <div class="lang-switcher" style="display:flex; background:rgba(255,255,255,0.05); border:1px solid var(--b-1); border-radius:8px; padding:3px; backdrop-filter:blur(5px);">
+                    <button class="lang-btn active" data-lang="es" style="background:transparent; color:var(--t-1); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">ES</button>
+                    <button class="lang-btn" data-lang="en" style="background:transparent; color:var(--t-2); border:none; border-radius:5px; padding:4px 8px; font-family:var(--f-mono); font-size:0.75rem; cursor:pointer; transition:0.2s;">EN</button>
+                </div>
+                <button class="btn btn--outline web3-connect-btn" style="padding:0 14px; font-size:0.8rem; height:34px; display:flex; align-items:center; gap:6px;"><i data-lucide="wallet" style="width:14px; height:14px;"></i> Connect</button>
+                <a href="#contacto-mkt" class="btn btn--glow nav__cta" style="height:34px; padding:0 20px; line-height:34px; font-size:0.85rem;" aria-label="Solicitar consultoría de marketing e IA">Consultar</a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <style>
+            .lang-btn.active { background: var(--pink); color: #fff !important; }
+            .nav__cta { display: none; }
+            @media (min-width: 900px) {
+                .nav__cta { display: inline-flex; }
+                .nav__tools { gap: 20px; }
+            }
+            @media (max-width: 900px) {
+                .nav__tools { margin-right: 40px; }
+            }
+        </style>
+    </nav>
+    <div class="mob-menu" id="mobMenu">
+        <a href="/index" class="mob-link">Inicio</a>
+        <a href="/desarrollo" class="mob-link">Desarrollo</a>
+        <a href="/cripto" class="mob-link">Cripto</a>
+        <a href="/marketing" class="mob-link">Marketing</a>
+        <a href="/negocios" class="mob-link">Negocios</a>
+        <a href="/diplomado" class="mob-link">Diplomado</a>
+        <a href="/marketplace" class="mob-link">Marketplace</a>
+        <a href="/index#contacto" class="mob-link mob-link--cta">Consultar →</a>
+    </div>
+    <nav class="mob-app-nav">
+        <a href="/index#inicio" class="app-nav-item">
+            <i data-lucide="home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="/index#pilares" class="app-nav-item">
+            <i data-lucide="layers"></i>
+            <span>Servicios</span>
+        </a>
+        <button class="app-nav-item" onclick="document.getElementById('navBurger').click();" aria-label="Explorar Menú">
+            <i data-lucide="grid"></i>
+            <span>Explorar</span>
+        </button>
+        <a href="#contacto-mkt" class="app-nav-item item--cta">
+            <i data-lucide="message-square"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+    <div class="page-wrap">
+        <!-- HERO INSIGHTS -->
+        <section class="hero hero--simple" style="padding-top:150px; padding-bottom:50px;">
+            <div class="container hero__content center">
+                <div class="label label--pink">Base de Conocimiento</div>
+                <h1 class="hero__name" style="font-size:clamp(2.5rem,6vw,5rem)">
+                    <span class="grad-text">Insights</span> & Casos
+                </h1>
+                <p class="hero__lema" style="max-width:600px; margin: 0 auto;">Artículos, análisis de tendencias y novedades sobre Web3, E-commerce, Inteligencia Artificial y Growth Marketing.</p>
+            </div>
+        </section>
+
+        <!-- CMS INSIGHTS GRID -->
+        <section class="section" style="min-height: 50vh;">
+            <div class="container">
+                <div class="insights-grid" id="publicInsightsContainer">
+                    <div class="center text-muted mono" style="grid-column:1/-1;">Sincronizando con la red...</div>
+                </div>
+            </div>
+        </section>
+        
+        <style>
+            .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+            .insight-card { background: rgba(11, 15, 26, 0.6); backdrop-filter: blur(12px); border: 1px solid var(--b-1); border-radius: 20px; padding: 30px; display: flex; flex-direction: column; transition: 0.3s ease; }
+            .insight-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 10px 30px rgba(0,212,255,0.1); }
+            .insight-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+            .insight-category { font-family: var(--f-mono); font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--cyan); color: var(--cyan); }
+            .insight-date { font-size: 0.85rem; color: var(--t-2); font-family: var(--f-mono); }
+            .insight-title { font-size: 1.4rem; color: var(--t-1); margin-bottom: 15px; line-height: 1.4; }
+            .insight-excerpt { font-size: 0.95rem; color: var(--t-2); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+            .insight-btn { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; color: var(--cyan); font-family: var(--f-mono); font-size: 0.9rem; font-weight: 700; cursor: pointer; background: transparent; border: none; padding: 0; transition: 0.2s; }
+            .insight-btn:hover { color: var(--pink); letter-spacing: 0.5px; }
+            
+            /* Modal / Vista de Articulo */
+            .article-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; background: var(--bg-1); display: flex; flex-direction: column; overflow-y: auto; opacity: 0; pointer-events: none; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(20px); }
+            .article-modal.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+            .article-close { position: fixed; top: 20px; right: 30px; width: 45px; height: 45px; border-radius: 50%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 1px solid var(--b-2); color: var(--t-1); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10001; transition: 0.2s; }
+            .article-close:hover { background: rgba(236, 72, 153, 0.2); border-color: var(--pink); color: var(--pink); transform: scale(1.1); }
+            .article-header { padding: 120px 20px 60px; border-bottom: 1px solid var(--b-1); text-align: center; background: linear-gradient(180deg, rgba(0,212,255,0.05) 0%, transparent 100%); }
+            .article-content { max-width: 800px; margin: 0 auto; padding: 60px 20px 100px; font-size: 1.15rem; line-height: 1.8; color: var(--t-2); }
+            .article-content h2, .article-content h3 { color: var(--t-1); margin: 50px 0 20px; line-height: 1.3;}
+            .article-content p { margin-bottom: 25px; }
+            .article-content strong { color: var(--cyan); font-weight: 500;}
+            .article-content a { color: var(--pink); text-decoration: underline; text-underline-offset: 4px; }
+            .article-content ul, .article-content ol { margin-bottom: 25px; padding-left: 20px; }
+            .article-content li { margin-bottom: 10px; }
+            @media (max-width: 768px) { .article-header { padding-top: 100px; padding-bottom: 40px; } .article-title { font-size: 2rem !important; } }
+        </style>
+
+        <div class="article-modal window" id="articleModal">
+            <button class="article-close" id="articleClose"><i data-lucide="x"></i></button>
+            <div class="article-header">
+                <div class="container" style="max-width:800px;">
+                    <div class="insight-meta" style="justify-content:center; gap:15px; margin-bottom:25px;">
+                        <span class="insight-category" id="modalCategory">...</span>
+                        <span class="insight-date" id="modalDate">...</span>
+                    </div>
+                    <h1 class="article-title" id="modalTitle" style="font-size:3.5rem; margin-bottom: 20px; color:var(--t-1); line-height:1.2; font-family:var(--f-display);">Cargando...</h1>
+                </div>
+            </div>
+            <div class="article-content" id="modalContent"></div>
+            
+            <!-- Sticky CTA para Leads después de leer -->
+            <div style="text-align:center; padding: 40px 20px; border-top: 1px solid var(--b-1); background: rgba(0,0,0,0.3);">
+                <h3 style="color:var(--t-1); margin-bottom: 20px; font-family:var(--f-display);">¿Listo para escalar la estrategia en tu negocio?</h3>
+                <a href="https://wa.me/573183002448?text=Hola%20Edwin,%20acabo%20de%20leer%20uno%20de%20tus%20casos%20de%20éxito%20y%20me%20gustaría%20agendar%20una%20sesión." target="_blank" class="btn btn--primary btn--pulse">Agendar Sesión Privada ↗</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <div class="footer__logo">EM<span class="dot">.</span></div>
+                        <p class="mono footer__tagline">"Estrategias de pauta y contenido que posicionan tu marca en la
+                            élite digital."</p>
+                    </div>
+                    <nav class="footer__nav">
+                        <a href="/index">Inicio</a>
+                        <a href="/desarrollo">Desarrollo</a>
+                        <a href="/cripto">Cripto</a>
+                        <a href="/marketing">Marketing</a>
+                        <a href="/negocios">Negocios</a>
+                        <a href="/diplomado">Diplomado</a>
+                    </nav>
+                </div>
+                <div class="footer__bottom">
+                    <span class="mono">© 2026 Edwin Muñoz Isaza. Todos los derechos reservados.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+    <script src="/insights-ui.js"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="/global-enhancers.js" defer></script>
+    <script src="/ai-agent.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => { });
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            const roles = ['Performance Marketer', 'Content Strategist', 'Ads Specialist', 'Creative Director', 'Growth Manager'];
+            if (typeof initTypewriter === 'function') initTypewriter(roles);
+        });
+    </script>
+
+</body>
+
+</html>

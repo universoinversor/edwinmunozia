@@ -1,0 +1,56 @@
+{
+  "works": [
+    {
+      "id": 1,
+      "title": "AI Neural Commerce",
+      "category": "Negocios & IA",
+      "description": "Infraestructura de venta y modelos de atención predictiva para maximizar la escala de operaciones e-commerce.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
+      "tags": [
+        "Neural Marketing",
+        "E-commerce",
+        "ROI Optimization"
+      ],
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "CEGlobalEarn",
+      "category": "Cripto & DeFi",
+      "description": "Ecosistema educativo Web3 con modelo Learn & Earn enfocado en finanzas descentralizadas y protocolos DeFi de alto rendimiento.",
+      "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1200",
+      "tags": [
+        "DeFi",
+        "Web3 Education",
+        "Learn & Earn"
+      ],
+      "link": "https://ceglobalearn.com"
+    },
+    {
+      "id": 3,
+      "title": "Toons",
+      "category": "Marketing & Creative",
+      "description": "Estrategia de contenido y branding creativo para marcas de alto impacto, enfocado en retención y viralidad.",
+      "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=1200",
+      "tags": [
+        "Creative Direction",
+        "Content Strategy",
+        "Viral Assets"
+      ],
+      "link": "https://toons.com.co"
+    },
+    {
+      "id": 4,
+      "title": "BingX Copy Trading",
+      "category": "Yield Architecture",
+      "description": "Sistema de inversión automatizado integrado con BingX para copiado de estrategias institucionales en tiempo real.",
+      "image": "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1200",
+      "tags": [
+        "Automated Trading",
+        "Copy Trading",
+        "Risk Mgmt"
+      ],
+      "link": "https://bingxcopy.vercel.app"
+    }
+  ]
+}
