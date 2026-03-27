@@ -105,7 +105,6 @@
   }, { passive: true });
 })();
 
-
 // ─── MOBILE BURGER MENU (SECTION LINKS) ───────────────────
 (function initBurger() {
   const burger = document.getElementById('navBurger');
@@ -664,6 +663,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let idx = 0;
     const showNext = () => {
+      // Nexus UI Logic: Don't show social proof if a major panel is open
+      const hasActivePanel = document.querySelector('#aiChat.active, #waChat.active, #edwinTerminal.active, #cryptoLiveWidget.active');
+      if (hasActivePanel) {
+        setTimeout(showNext, 5000); // Retry soon
+        return;
+      }
+
       const ev = events[idx];
       container.querySelector('.sp-title').textContent = ev.title;
       container.querySelector('.sp-desc').textContent = ev.desc;
@@ -1238,33 +1244,46 @@ function initActionHub() {
     const aiChat = document.getElementById('aiChat');
     const waChat = document.getElementById('waChat');
     const term = document.getElementById('edwinTerminal');
+    const cryptoWidget = document.getElementById('cryptoLiveWidget');
+    const spToast = document.getElementById('spToast');
+
     if (aiChat) aiChat.classList.remove('active');
     if (waChat) waChat.classList.remove('active');
     if (term) term.classList.remove('active');
+    if (cryptoWidget) cryptoWidget.classList.remove('active');
+    // We don't necessarily hide social proof unless it's a small screen
+    if (window.innerWidth < 768 && spToast) spToast.classList.remove('active');
   };
 
 
   if (termBtn) {
     termBtn.addEventListener('click', () => {
-      const isActive = document.getElementById('edwinTerminal')?.classList.contains('active');
+      const term = document.getElementById('edwinTerminal');
+      const wasActive = term?.classList.contains('active');
+      
       closeAllHubPanels();
-      if (!isActive && typeof window.toggleTerm === 'function') window.toggleTerm();
+      
+      if (!wasActive && typeof window.toggleTerm === 'function') {
+        window.toggleTerm();
+      }
     });
   }
 
   if (aiBtn) {
     aiBtn.addEventListener('click', () => {
-      // If Nexus AI agent is installed, bridge the click to it
+      // Logic for Nexus UI: Close others first
+      const wasActive = document.getElementById('aiChat')?.classList.contains('active');
       const nexusFab = document.getElementById('aiFab');
+      
+      closeAllHubPanels(); // This now includes crypto widget too
+
+      // If Nexus AI agent is installed, bridge the click to it
       if (nexusFab) {
         nexusFab.click();
-        closeAllHubPanels();
         return;
       }
 
-      const isActive = document.getElementById('aiChat')?.classList.contains('active');
-      closeAllHubPanels();
-      if (!isActive) {
+      if (!wasActive) {
         window.verifyIdentity(() => {
           const chat = document.getElementById('aiChat');
           if (chat) {
@@ -1273,6 +1292,22 @@ function initActionHub() {
             if (input) input.focus();
           }
         });
+      }
+    });
+  }
+
+  if (waBtn) {
+    waBtn.addEventListener('click', () => {
+      const waChat = document.getElementById('waChat');
+      const wasActive = waChat?.classList.contains('active');
+      
+      closeAllHubPanels();
+      
+      if (waChat && !wasActive) {
+        waChat.classList.add('active');
+      } else if (!waChat) {
+        // Fallback: Open WhatsApp link directly if no widget
+        window.open('https://wa.me/573000000000', '_blank');
       }
     });
   }
