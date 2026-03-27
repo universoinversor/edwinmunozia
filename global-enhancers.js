@@ -311,3 +311,4 @@ function createVideoHtml(videoUrl, posterUrl) {
         return `<video ${posterAttr} autoplay muted loop playsinline controls style="width:100%; border-radius:12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);"><source src="${videoUrl}" type="video/mp4">Tu navegador no soporta videos.</video>`;
     }
 }
+

@@ -81,3 +81,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
     }
 });
+

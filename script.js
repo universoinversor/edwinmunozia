@@ -309,7 +309,7 @@ const i18n = {
   data: {},
   async init() {
     try {
-      const res = await fetch('/data/translations.json');
+      const res = await fetch('/data_v2/translations.json');
       this.data = await res.json();
       this.updateUI();
     } catch (err) {
@@ -487,7 +487,7 @@ async function initDynamicPortfolio() {
   if (!grids.length) return;
 
   try {
-    const response = await fetch('data/works.json');
+    const response = await fetch('data_v2/works.json');
     const data = await response.json();
     const works = data.works;
 
@@ -1704,4 +1704,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initActionHub === 'function') initActionHub();
   if (typeof initGlobalGlobe === 'function') initGlobalGlobe();
 });
+
 

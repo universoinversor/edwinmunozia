@@ -18,3 +18,4 @@ try {
 } catch(e) {
     console.warn("Firebase no se pudo inicializar.", e);
 }
+

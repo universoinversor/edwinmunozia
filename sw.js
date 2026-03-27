@@ -1,10 +1,10 @@
 'use strict';
 /* ════════════════════════════════════════════════
-   EDWIN MUÑOZ ISAZA — Service Worker v1.0
+   EDWIN MUÑOZ ISAZA — Service Worker v1.4
    Strategy: Cache-First for assets, Network-First for HTML
    ════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'em-portfolio-v1.3';
+const CACHE_NAME = 'em-portfolio-v1.4';
 const OFFLINE_URL = '/404';
 
 const STATIC_ASSETS = [
@@ -20,8 +20,8 @@ const STATIC_ASSETS = [
     '/script.js',
     '/favicon.svg',
     '/manifest.json',
-    '/assets/img/ai_entity_bot.png',
-    '/assets/img/edwin-tech-main.png'
+    '/assets_v2/img/ai_entity_bot.png',
+    '/assets_v2/img/edwin-tech-main.png'
 ];
 
 // ─── INSTALL ──────────────────────────────────────────────
@@ -82,3 +82,4 @@ self.addEventListener('fetch', event => {
         })
     );
 });
+

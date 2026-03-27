@@ -194,3 +194,4 @@ function createCard(id, title, price, description, image, category) {
     `;
     return div;
 }
+
