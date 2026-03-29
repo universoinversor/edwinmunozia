@@ -769,19 +769,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toggle minimize
   const toggle = document.getElementById('clwToggle');
-  const body = document.getElementById('clwBody');
-  let minimized = window.innerWidth <= 768;
-  
-  if (minimized && body && toggle) {
-    body.style.display = 'none';
-    toggle.textContent = '+';
-  }
   if (toggle) {
     toggle.addEventListener('click', () => {
-      minimized = !minimized;
-      body.style.display = minimized ? 'none' : '';
-      toggle.textContent = minimized ? '+' : '−';
+      const isActive = widget.classList.toggle('active');
+      toggle.textContent = isActive ? '−' : '+';
+      if (isActive) {
+        // Logic for Nexus UI: Close others if we expand prices
+        if (typeof window.closeAllHubPanels === 'function') {
+           window.closeAllHubPanels();
+        }
+      }
     });
+
+    // Default state: closed/minimized on mobile, open on desktop
+    if (window.innerWidth < 900) {
+      widget.classList.remove('active');
+      toggle.textContent = '+';
+    } else {
+      widget.classList.add('active');
+      toggle.textContent = '−';
+    }
   }
 
   // Fetch and update prices
@@ -1239,8 +1246,8 @@ function initActionHub() {
   const waBtn = document.getElementById('waButton');
   const aiBtn = document.getElementById('aiToggle');
 
-  // Unified Toggle Logic
-  const closeAllHubPanels = () => {
+  // Unified Toggle Logic (Globalized for Nexus UI)
+  window.closeAllHubPanels = () => {
     const aiChat = document.getElementById('aiChat');
     const waChat = document.getElementById('waChat');
     const term = document.getElementById('edwinTerminal');
@@ -1251,6 +1258,11 @@ function initActionHub() {
     if (waChat) waChat.classList.remove('active');
     if (term) term.classList.remove('active');
     if (cryptoWidget) cryptoWidget.classList.remove('active');
+    
+    // UI Polish: Change toggle icons if they exist
+    const clwToggle = document.getElementById('clwToggle');
+    if (clwToggle) clwToggle.textContent = '+';
+    
     // We don't necessarily hide social proof unless it's a small screen
     if (window.innerWidth < 768 && spToast) spToast.classList.remove('active');
   };
@@ -1261,7 +1273,7 @@ function initActionHub() {
       const term = document.getElementById('edwinTerminal');
       const wasActive = term?.classList.contains('active');
       
-      closeAllHubPanels();
+      window.closeAllHubPanels();
       
       if (!wasActive && typeof window.toggleTerm === 'function') {
         window.toggleTerm();
@@ -1275,7 +1287,7 @@ function initActionHub() {
       const wasActive = document.getElementById('aiChat')?.classList.contains('active');
       const nexusFab = document.getElementById('aiFab');
       
-      closeAllHubPanels(); // This now includes crypto widget too
+      window.closeAllHubPanels();
 
       // If Nexus AI agent is installed, bridge the click to it
       if (nexusFab) {
@@ -1301,7 +1313,7 @@ function initActionHub() {
       const waChat = document.getElementById('waChat');
       const wasActive = waChat?.classList.contains('active');
       
-      closeAllHubPanels();
+      window.closeAllHubPanels();
       
       if (waChat && !wasActive) {
         waChat.classList.add('active');
